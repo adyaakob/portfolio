@@ -14,11 +14,7 @@ export function ThemeProvider({
   ...props 
 }: ThemeProviderProps) {
   return (
-    <NextThemesProvider 
-      {...props} 
-      enableSystem={true} 
-      attribute="class"
-    >
+    <NextThemesProvider {...props}>
       {children}
     </NextThemesProvider>
   )
