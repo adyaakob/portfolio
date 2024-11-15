@@ -17,7 +17,7 @@ export default function Hero() {
         </div>
 
         {/* Text Content */}
-        <p className="text-purple-600 dark:text-purple-400 mb-4">Hi, I'm</p>
+        <p className="text-purple-600 dark:text-purple-400 mb-4">I&apos;m</p>
         <h1 className="text-4xl md:text-5xl font-bold bg-gradient-to-r from-[#38BDF8] to-[#E879F9] bg-clip-text text-transparent">
           Ahmad Dahalan Yaakob
         </h1>

@@ -43,7 +43,7 @@ export default function About() {
         <div className="bg-gray-100 dark:bg-gray-800/50 p-8 rounded-lg border border-purple-200 dark:border-purple-400/20">
           <h3 className="text-xl font-bold text-purple-600 dark:text-purple-400 mb-4">Motivation</h3>
           <blockquote className="text-gray-700 dark:text-gray-300 text-lg italic">
-            "Use our strengths, realize our weaknesses and formulate winning strategies - TunM"
+            &ldquo;Use our strengths, realize our weaknesses and formulate winning strategies - TunM&rdquo;
           </blockquote>
         </div>
       </div>
