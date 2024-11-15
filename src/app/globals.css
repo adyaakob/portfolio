@@ -2,20 +2,204 @@
 @tailwind components;
 @tailwind utilities;
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+@media print {
+  @page {
+    size: A4 portrait;
+    margin: 20mm;
   }
-}
+  
+  html, body {
+    width: 210mm;
+    height: 297mm;
+  }
+  
+  body {
+    -webkit-print-color-adjust: exact !important;
+    print-color-adjust: exact !important;
+    color-adjust: exact !important;
+  }
+  
+  /* Force light theme for print */
+  :root {
+    color-scheme: light !important;
+  }
 
-body {
-  color: var(--foreground);
-  background: var(--background);
-  font-family: Arial, Helvetica, sans-serif;
+  body, main {
+    background: white !important;
+    color: #000 !important;
+  }
+
+  /* Reset all dark mode colors to light theme */
+  .dark\:bg-gray-800, 
+  .dark\:bg-gray-900,
+  .dark\:bg-gray-800\/50 {
+    background-color: white !important;
+  }
+
+  .dark\:text-white,
+  .dark\:text-gray-100,
+  .dark\:text-gray-200,
+  .dark\:text-gray-300,
+  .dark\:text-\[\#94A3B8\],
+  .dark\:text-\[\#64748B\] {
+    color: #000 !important;
+  }
+
+  /* Hide navigation and buttons when printing */
+  nav, button, .print-hidden {
+    display: none !important;
+  }
+  
+  /* Ensure proper page breaks */
+  section {
+    page-break-inside: avoid;
+    break-inside: avoid;
+  }
+  
+  /* Adjust content width for A4 */
+  .max-w-6xl {
+    max-width: 200mm !important;
+    margin: 0 auto;
+  }
+
+  /* Font sizes for print */
+  h1 {
+    font-size: 16pt !important;
+    color: #000 !important;
+  }
+  
+  h2 {
+    font-size: 12pt !important;
+    color: #000 !important;
+  }
+  
+  h3 {
+    font-size: 10pt !important;
+    color: #000 !important;
+  }
+
+  p, span, div {
+    font-size: 9pt !important;
+    color: #1a1a1a !important;
+  }
+
+  /* Card styles for print */
+  .bg-gray-50,
+  .dark\:bg-gray-800\/50 {
+    background-color: white !important;
+    border: 1px solid #e5e7eb !important;
+  }
+
+  /* Text colors for print */
+  .text-gray-700 {
+    color: #374151 !important;
+  }
+
+  .text-gray-600 {
+    color: #4b5563 !important;
+  }
+
+  .text-gray-500 {
+    color: #6b7280 !important;
+  }
+
+  /* Fix Next.js Image printing */
+  img,
+  span img,
+  Image,
+  .next-image-wrapper img {
+    display: block !important;
+    opacity: 1 !important;
+    visibility: visible !important;
+    break-inside: avoid !important;
+    print-color-adjust: exact !important;
+    -webkit-print-color-adjust: exact !important;
+    color-adjust: exact !important;
+    position: relative !important;
+    z-index: 1 !important;
+  }
+
+  /* Fix Next.js Image container */
+  span[style*="box-sizing: border-box"],
+  .next-image-wrapper {
+    display: block !important;
+    opacity: 1 !important;
+    visibility: visible !important;
+    position: relative !important;
+    z-index: 1 !important;
+  }
+
+  /* Ensure image containers maintain aspect ratio */
+  .relative.aspect-\[16\/9\] {
+    position: relative !important;
+    padding-top: 56.25% !important;
+    overflow: hidden !important;
+    margin-bottom: 1rem !important;
+  }
+
+  .relative.aspect-\[16\/9\] > img,
+  .relative.aspect-\[16\/9\] > span {
+    position: absolute !important;
+    top: 0 !important;
+    left: 0 !important;
+    width: 100% !important;
+    height: 100% !important;
+    object-fit: cover !important;
+  }
+
+  /* Grid layouts for print */
+  .grid {
+    display: grid !important;
+    grid-template-columns: repeat(2, 1fr) !important;
+    gap: 1rem !important;
+    width: 100% !important;
+  }
+
+  /* Force background colors and images to print */
+  * {
+    -webkit-print-color-adjust: exact !important;
+    color-adjust: exact !important;
+    print-color-adjust: exact !important;
+  }
+
+  /* Certification specific print styles */
+  #certifications .grid > div {
+    break-inside: avoid !important;
+    page-break-inside: avoid !important;
+    background-color: white !important;
+    border: 1px solid #e5e7eb !important;
+  }
+
+  /* Prevent grid items from breaking across pages */
+  .grid > div {
+    break-inside: avoid !important;
+    page-break-inside: avoid !important;
+    margin-bottom: 1rem !important;
+  }
+
+  /* Force new page before section if it might break */
+  section {
+    break-before: auto !important;
+    break-after: auto !important;
+    break-inside: avoid !important;
+    page-break-before: auto !important;
+    page-break-after: auto !important;
+    page-break-inside: avoid !important;
+    margin-bottom: 2rem !important;
+  }
+
+  /* Ensure grid containers don't break */
+  .grid {
+    display: grid !important;
+    grid-template-columns: repeat(2, 1fr) !important;
+    gap: 1rem !important;
+    width: 100% !important;
+    break-inside: avoid-page !important;
+    page-break-inside: avoid !important;
+  }
+
+  /* Add more spacing between sections to encourage better breaks */
+  section + section {
+    margin-top: 2rem !important;
+  }
 }
