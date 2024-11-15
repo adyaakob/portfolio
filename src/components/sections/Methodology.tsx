@@ -21,7 +21,7 @@ export default function Methodology() {
               <p className="text-gray-600 dark:text-gray-300 mb-6 leading-relaxed">
                 In my design and development processes, I employ the Vee Model Systems Engineering methodology, 
                 a structured framework that emphasizes thorough planning, integration, and validation throughout 
-                a project's lifecycle. This approach ensures that each phase of development is systematically 
+                a project&apos;s lifecycle. This approach ensures that each phase of development is systematically 
                 aligned with corresponding testing activities, promoting early detection and resolution of 
                 potential issues.
               </p>
