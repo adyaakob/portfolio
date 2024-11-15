@@ -1,4 +1,5 @@
 import Image from 'next/image';
+import { getImagePath } from '@/utils/imagePath'
 const experienceData = require('../../data/experience');
 
 // First, define an interface for your job data
@@ -37,10 +38,10 @@ export default function Experience() {
                 {job.logo && (
                   <div className="flex-shrink-0 w-16 h-16 bg-white rounded-full p-2 flex items-center justify-center">
                     <Image
-                      src={job.logo}
-                      alt={`${job.company} logo`}
-                      width={44}
-                      height={44}
+                      src={getImagePath('/images/companies/sapura-thales.png')}
+                      alt="Sapura Thales"
+                      width={200}
+                      height={100}
                       className="rounded-full object-contain"
                     />
                   </div>
