@@ -23,35 +23,35 @@ const projectsData = [
     title: "TRC5200 Tactical VHF Handheld",
     period: "Jan 2017 - Jan 2020",
     date: "Jan 2017 - Jan 2020",
-    image: "/images/projects/trc5200.jpg",
+    image: "/portfolio/images/projects/trc5200.jpg",
     description: "Second generation of VHF radio with Sapura Thales Electronics (STE), fully designed and developed in Malaysia"
   },
   {
     title: "Future Soldier System (FSS)",
     period: "Jan 2015 - Jan 2018",
     date: "Jan 2015 - Jan 2018",
-    image: "/images/projects/fss.jpg",
+    image: "/portfolio/images/projects/fss.jpg",
     description: "Fully developed by local engineers"
   },
   {
     title: "OICS for Deftech 8x8 GEMPITA",
     period: "Jan 2015 - Jan 2018",
     date: "Jan 2015 - Jan 2018",
-    image: "/images/projects/oics.jpg",
+    image: "/portfolio/images/projects/oics.jpg",
     description: "Thales, through its joint venture STE, is part of the AV8 programme for the Royal Malaysian Army. STE provides communication, vetronics, sensors, command & control, mortar, and optronics"
   },
   {
     title: "Radio Communication Installation for 4x4 Lipan Bara",
     period: "Jan 2015 - Dec 2015",
     date: "Jan 2015 - Dec 2015",
-    image: "/images/projects/lipan-bara.jpg",
+    image: "/portfolio/images/projects/lipan-bara.jpg",
     description: ""
   },
   {
     title: "TRC5100 Tactical VHF Handheld",
     period: "Jan 1997 - Jan 2015",
     date: "Jan 1997 - Jan 2015",
-    image: "/images/projects/trc5100.jpg",
+    image: "/portfolio/images/projects/trc5100.jpg",
     description: "First-generation of tactical handheld, designed and produced locally"
   }
 ]
