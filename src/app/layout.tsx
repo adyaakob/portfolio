@@ -3,8 +3,8 @@ import type { Metadata } from 'next'
 import '@/app/globals.css'
 
 export const metadata: Metadata = {
-  title: 'Portfolio',
-  description: 'My Portfolio Website',
+  title: 'Ahmad Dahalan Yaakob',
+  description: 'Professional Portfolio of Ahmad Dahalan Yaakob',
 }
 
 export default function RootLayout({
@@ -14,11 +14,11 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en" suppressHydrationWarning>
-      <head />
+      <head>
+        <title>Ahmad Dahalan Yaakob</title>
+      </head>
       <body>
-        <ThemeProvider>
-          {children}
-        </ThemeProvider>
+        <ThemeProvider>{children}</ThemeProvider>
       </body>
     </html>
   )

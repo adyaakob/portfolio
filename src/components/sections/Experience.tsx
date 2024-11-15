@@ -1,5 +1,5 @@
 import Image from 'next/image';
-import { getImagePath } from '@/utils/imagePath'
+import { getBasePath } from '@/lib/utils'
 const experienceData = require('../../data/experience');
 
 // First, define an interface for your job data
@@ -15,13 +15,15 @@ interface Job {
 }
 
 export default function Experience() {
+  const basePath = getBasePath()
+
   if (!Array.isArray(experienceData)) {
     console.error('Experience data is not an array:', experienceData);
     return null;
   }
 
   return (
-    <section id="experience" className="py-16 bg-gray-50 dark:bg-gray-900">
+    <section id="experience" className="pt-20 -mt-20">
       <div className="container mx-auto px-4">
         <h2 className="text-3xl font-bold text-center mb-8 text-[#C084FC]">
           Experience
@@ -38,7 +40,7 @@ export default function Experience() {
                 {job.logo && (
                   <div className="flex-shrink-0 w-16 h-16 bg-white rounded-full p-2 flex items-center justify-center">
                     <Image
-                      src={job.logo || '/portfolio/images/companies/default-logo.jpg'}
+                      src={`${basePath}${job.logo}` || `${basePath}/images/companies/default-logo.jpg`}
                       alt={job.company}
                       width={200}
                       height={100}

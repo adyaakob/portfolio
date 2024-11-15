@@ -17,7 +17,7 @@ const experienceData: Experience[] = [
     period: "2020 - Jun 2024",
     duration: "4 yrs",
     location: "Kuala Lumpur, Federal Territory of Kuala Lumpur, Malaysia",
-    logo: "/portfolio/images/companies/sapura-thales.jpg",
+    logo: "/images/companies/sapura-thales.jpg",
     responsibilities: [
       "Post-MCO - Ensuring smooth ramp-up of RND activities after company re-open, and executing what was defined in the Business Continuation Plan (BCP)",
       "Adapting to the new normal and familiarize with remote working environments - driving businesses to automate as quickly as possible to ensure business continuity",
@@ -32,7 +32,7 @@ const experienceData: Experience[] = [
     type: "Full-time",
     period: "2014 - 2019",
     duration: "5 yrs",
-    logo: "/portfolio/images/companies/sapura-thales.jpg",
+    logo: "/images/companies/sapura-thales.jpg",
     responsibilities: [
       "Completed product development lifecycle (from design to manufacturing) for TRC5200, 1st tactical radio developed by 100% local engineers",
       "Managing schedule, budget and risks for sulf-funded projects and customer-funded program",
@@ -49,7 +49,7 @@ const experienceData: Experience[] = [
     type: "Full-time",
     period: "2010 - 2013",
     duration: "3 yrs",
-    logo: "/portfolio/images/companies/sapura-thales.jpg",
+    logo: "/images/companies/sapura-thales.jpg",
     responsibilities: [
       "Completed the integration of Future Soldier System (FSS) under NCO Phase 1A Program",
       "Delivery, Deployment and User Acceptance of FSS within schedule and budget",
@@ -75,7 +75,7 @@ const experienceData: Experience[] = [
     type: "Full-time",
     period: "2008 - 2009",
     duration: "1 yr",
-    logo: "/portfolio/images/companies/sapura-thales.jpg",
+    logo: "/images/companies/sapura-thales.jpg",
     responsibilities: [
       "Validation and verification of CNR10 main equipment and accessories. Fully complied with user expectations",
       "Communication Solution for AV8 Gempita",
@@ -91,7 +91,7 @@ const experienceData: Experience[] = [
     type: "Full-time",
     period: "2003 - 2007",
     duration: "4 yrs",
-    logo: "/portfolio/images/companies/sapura-thales.jpg",
+    logo: "/images/companies/sapura-thales.jpg",
     responsibilities: [
       "Validation and verification of CNR9 main equipment and accessories. Fully complied with user expectations",
       "Multi Channel Radio System (MCRS) product evaluation with customers"
@@ -103,7 +103,7 @@ const experienceData: Experience[] = [
     type: "Full-time",
     period: "Aug 1997 - Dec 2002",
     duration: "5 yrs 5 mos",
-    logo: "/portfolio/images/companies/sapura-thomson.jpg",
+    logo: "/images/companies/sapura-thomson.jpg",
     responsibilities: [
       "Completed the development of 1st generation of VHF tactical handheld TRC5100"
     ]
@@ -114,7 +114,7 @@ const experienceData: Experience[] = [
     type: "Full-time",
     period: "1994 - Dec 1995",
     duration: "2 yrs",
-    logo: "/portfolio/images/companies/harris.jpg",
+    logo: "/images/companies/harris.jpg",
     responsibilities: [
       "Semiconductor Division"
     ]

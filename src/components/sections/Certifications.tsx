@@ -1,22 +1,25 @@
 import Image from 'next/image'
 import SectionTitle from '../SectionTitle'
-
-const certificationsData = [
-  {
-    title: "Basic Fire Fighting & Emergency Response Plan",
-    issuer: "Asian First Aid Academy",
-    issueDate: "Issued Jan 2020",
-    image: "/portfolio/images/certifications/fire-fighting.jpg"
-  },
-  {
-    title: "Occupational First Aider Certification",
-    issuer: "Asian First Aid Academy",
-    issueDate: "Issued Jan 2020",
-    image: "/portfolio/images/certifications/first-aid.jpg"
-  }
-]
+import { getBasePath } from '@/lib/utils'
 
 export default function Certifications() {
+  const basePath = getBasePath()
+
+  const certificationsData = [
+    {
+      title: "Basic Fire Fighting & Emergency Response Plan",
+      issuer: "Asian First Aid Academy",
+      issueDate: "Issued Jan 2020",
+      image: `${basePath}/images/certifications/fire-fighting.jpg`
+    },
+    {
+      title: "Occupational First Aider Certification",
+      issuer: "Asian First Aid Academy",
+      issueDate: "Issued Jan 2020",
+      image: `${basePath}/images/certifications/first-aid.jpg`
+    }
+  ]
+
   return (
     <section id="certifications" className="pt-20 -mt-20">
       <SectionTitle>Certifications</SectionTitle>

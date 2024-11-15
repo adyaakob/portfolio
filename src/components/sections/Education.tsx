@@ -1,22 +1,25 @@
 import Image from 'next/image'
 import SectionTitle from '../SectionTitle'
+import { getBasePath } from '@/lib/utils'
 
 const educationData = [
   {
     institution: "University of Plymouth",
-    logo: "/portfolio/images/education/plymouth-logo.jpg",
+    logo: "/images/education/plymouth-logo.jpg",
     degree: "B.Eng (Hons), Electrical and Electronics Engineering",
     period: "1995 - 1997",
   },
   {
     institution: "Universiti Teknologi Malaysia",
-    logo: "/portfolio/images/education/utm-logo.jpg",
+    logo: "/images/education/utm-logo.jpg",
     degree: "Diploma in Electrical Engineering (Communications)",
     period: "1991 - 1994",
   },
 ]
 
 export default function Education() {
+  const basePath = getBasePath()
+  
   return (
     <section id="education" className="pt-20 -mt-20">
       <SectionTitle>Education</SectionTitle>
@@ -26,7 +29,7 @@ export default function Education() {
           <div key={index} className="flex items-start gap-4 p-6 rounded-lg bg-gray-50 dark:bg-gray-800/50">
             <div className="w-12 h-12 relative flex-shrink-0">
               <Image
-                src={edu.logo}
+                src={`${basePath}${edu.logo}`}
                 alt={`${edu.institution} logo`}
                 fill
                 className="object-contain"

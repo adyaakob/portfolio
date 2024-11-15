@@ -7,46 +7,65 @@ export default function About() {
         <h2 className="text-3xl font-bold text-purple-600 dark:text-purple-400 mb-8 text-center">About Me</h2>
         
         <p className="text-gray-700 dark:text-gray-300 mb-8 text-lg leading-relaxed">
-          Leading a team of 30+ engineers (electrical/electronics, RF, software engineering, 
-          computer engineering, and mechanical & industrial engineering) on multiple portfolios, 
-          specializing in:
+          As a seasoned engineering leader, I bring over two decades of expertise in managing diverse teams 
+          of 30+ engineers across multiple disciplines. My comprehensive experience spans electrical systems, 
+          RF technology, software development, and mechanical engineering, driving innovation in defense 
+          communications and military technology.
         </p>
 
-        <ul className="space-y-4 text-gray-700 dark:text-gray-300 mb-12">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-12">
           {[
-            "Applying ISO 9001 to Product Development. Motivate and organize the team – to deliver on time and to budget.",
-            "Defense Communications Solutions - Structure and challenge the team in building competitive technical proposals for prospective local and worldwide customers.",
-            "Software Development Projects (embedded and applications - Windows & Android).",
-            "Platform Integration Programs with aggressive delivery schedules (armored vehicles, naval ships).",
-            "IVVQ. Lead the integration, verification, validation, and qualifications, in partnership with the main contractors, STRIDE and local universities.",
-            "Product Qualification: capability & knowledge to perform Qualification of Products based on MIL-STD-810 and MIL-STD-461, in collaboration with SIRIM, MIMOS and Angkasa as well as international certification bodies (e.g Singapore and France)",
-            "Product Industrialization: from Design to Manufacturing",
-            "Military System Integration: Secure IP-Based radio network, Network Centric Operations (NCO), Internal and External Communications for armored vehicles and motherships, Strategic Communication Architecture for submarine.",
-            "Conducting successful new product Field Trials, FAT, SAT & HAT with end-customers.",
-            "End User Training: Get it right from start to finish and able to customize to meet requirements.",
-            "Life Extension Program: technical and commercial assessment",
-            "Proof of Concept (POC), develop and demonstrate the functionality to customer for better decision making.",
-            "Participation in Defense Exhibitions (LIMA, DSA, MDIC, GPEC, IndoDefense, MILIPOL Paris, Eurosatuory)",
-            "Product launching",
-            "Skills and competencies enhancement for technical team",
-            "Participation in student internship program (from local and overseas students)",
-            "Knowledge sharing session with local universities",
-            "Technology update session with existing customers"
+            {
+              title: "Product Development Excellence",
+              description: "Spearheading ISO 9001-compliant product development initiatives, ensuring on-time delivery and budget optimization while maintaining the highest quality standards."
+            },
+            {
+              title: "Defense Communications Solutions",
+              description: "Architecting competitive technical proposals for global defense clients, combining innovative solutions with strategic thinking to meet complex military requirements."
+            },
+            {
+              title: "Software Innovation",
+              description: "Leading full-cycle development of embedded systems and applications across Windows & Android platforms, focusing on performance, security, and reliability."
+            },
+            {
+              title: "Military Integration Expertise",
+              description: "Managing sophisticated platform integration programs for armored vehicles and naval ships, delivering mission-critical solutions under aggressive timelines."
+            },
+            {
+              title: "Defense Exhibitions & Marketing",
+              description: "Actively participated in defense exhibitions, showcasing cutting-edge solutions and building relationships with potential customers and industry partners."
+            },
+            {
+              title: "Customer Engagement",
+              description: "Worked directly with customers to understand their needs and problem statements, offering tailored solutions to meet specific requirements."
+            },
+            {
+              title: "Proposal & Tendering",
+              description: "Contributed as a core team member in preparing proposals and participating in the tendering process for defense projects, collaborating closely with senior leadership and technical teams to ensure successful submissions."
+            },
+            {
+              title: "Team Development & Knowledge Sharing",
+              description: "Led skills and competencies enhancement for the technical team, participated in student internship programs (both local and overseas), conducted knowledge sharing sessions with local universities, and organized technology update sessions for existing customers."
+            }
           ].map((item, index) => (
-            <li key={index} className="flex items-start">
-              <span className="text-purple-600 dark:text-purple-400 mr-4 font-bold">{index + 1}.</span>
-              <span>{item}</span>
-            </li>
+            <div key={index} className="bg-gray-50 dark:bg-gray-800/50 p-6 rounded-lg">
+              <h3 className="text-xl font-semibold text-purple-600 dark:text-purple-400 mb-2">
+                {item.title}
+              </h3>
+              <p className="text-gray-700 dark:text-gray-300">
+                {item.description}
+              </p>
+            </div>
           ))}
-        </ul>
+        </div>
 
-        <div className="bg-gray-100 dark:bg-gray-800/50 p-8 rounded-lg border border-purple-200 dark:border-purple-400/20">
-          <h3 className="text-xl font-bold text-purple-600 dark:text-purple-400 mb-4">Motivation</h3>
-          <blockquote className="text-gray-700 dark:text-gray-300 text-lg italic">
+        <div className="bg-gradient-to-r from-purple-50 to-blue-50 dark:from-gray-800/50 dark:to-gray-800/30 p-8 rounded-lg border border-purple-200 dark:border-purple-400/20">
+          <h3 className="text-xl font-bold text-purple-600 dark:text-purple-400 mb-4 text-center">Leadership Philosophy</h3>
+          <blockquote className="text-gray-700 dark:text-gray-300 text-lg italic text-center">
             &ldquo;Use our strengths, realize our weaknesses and formulate winning strategies - TunM&rdquo;
           </blockquote>
         </div>
       </div>
     </section>
   )
-} 
+}

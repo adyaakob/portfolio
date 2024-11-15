@@ -1,14 +1,32 @@
 import Image from 'next/image'
 import PrintButton from '../PrintButton'
+import { getBasePath } from '@/lib/utils'
+import { FaEnvelope, FaPhone, FaCalendar } from 'react-icons/fa'
 
 export default function Hero() {
+  const basePath = getBasePath()
+  
+  // Calculate age dynamically
+  const calculateAge = () => {
+    const birthDate = new Date('1973-01-03');
+    const today = new Date();
+    let age = today.getFullYear() - birthDate.getFullYear();
+    const monthDiff = today.getMonth() - birthDate.getMonth();
+    
+    if (monthDiff < 0 || (monthDiff === 0 && today.getDate() < birthDate.getDate())) {
+      age--;
+    }
+    
+    return age;
+  };
+
   return (
     <section className="pt-20 text-center">
       <div className="container mx-auto px-4">
         {/* Profile Image */}
         <div className="w-48 h-48 relative rounded-full overflow-hidden mx-auto mb-8">
           <Image
-            src="/portfolio/profile.jpg"
+            src={`${basePath}/profile.jpg`}
             alt="Profile"
             width={300}
             height={300}
@@ -33,6 +51,34 @@ export default function Hero() {
           and delivering high-quality products that meet the most demanding requirements.
         </p>
         
+        {/* Personal Information */}
+        <div className="flex flex-wrap justify-center items-center gap-x-6 gap-y-2 mb-8 print:mb-6 print:gap-x-4 print:text-sm">
+          <div className="flex items-center gap-2 text-gray-600 dark:text-gray-300 whitespace-nowrap">
+            <FaCalendar className="w-4 h-4 text-purple-600 dark:text-purple-400" />
+            <span className="text-sm">{calculateAge()} years old</span>
+          </div>
+          
+          <div className="flex items-center gap-2 text-gray-600 dark:text-gray-300 whitespace-nowrap">
+            <FaPhone className="w-4 h-4 text-purple-600 dark:text-purple-400" />
+            <a 
+              href="tel:+60102369037" 
+              className="text-sm hover:text-purple-600 dark:hover:text-purple-400 transition-colors print:hover:text-current"
+            >
+              +60 102369037
+            </a>
+          </div>
+          
+          <div className="flex items-center gap-2 text-gray-600 dark:text-gray-300 whitespace-nowrap">
+            <FaEnvelope className="w-4 h-4 text-purple-600 dark:text-purple-400" />
+            <a 
+              href="mailto:adyaakob@gmail.com" 
+              className="text-sm hover:text-purple-600 dark:hover:text-purple-400 transition-colors print:hover:text-current"
+            >
+              adyaakob@gmail.com
+            </a>
+          </div>
+        </div>
+
         {/* Action buttons group */}
         <div className="flex flex-wrap justify-center gap-4 mt-8">
           <a 

@@ -59,17 +59,21 @@ const projectsInMotionData = [
   }
 ]
 
+import { getBasePath } from '@/lib/utils'
+
+const basePath = getBasePath()
+
 export default function ProjectsInMotion() {
   const technicalConsultationProjects = [
     {
       name: "MyLAB Grant Application for UniKL",
       description: "Collaborating on a groundbreaking university-industry partnership with UniKL, providing technical expertise for a pre-commercialization initiative under the MyLAB grant. This project, shortlisted among 33 entries, leverages LIDAR and LoRa technologies to develop scalable, real-world solutions for industrial applications.",
-      image: "/portfolio/images/projects-in-motion/mylab-grant.jpg"
+      image: `${basePath}/images/projects-in-motion/mylab-grant.jpg`
     },
     {
       name: "Product Marketing Brochure Redesign",
       description: "Assisting a local company with a strategic review, update, and redesign of its product and marketing brochure. The project focuses on enhancing visual appeal, brand clarity, and customer engagement through graphic design, content strategy, and market research to create a brochure that effectively communicates value to the target audience.",
-      image: "/portfolio/images/projects-in-motion/brochure-redesign.jpg"
+      image: `${basePath}/images/projects-in-motion/brochure-redesign.jpg`
     }
   ];
 
@@ -77,37 +81,37 @@ export default function ProjectsInMotion() {
     {
       name: "Low-Cost Drone Jammer for Military Applications",
       description: "Completed a feasibility study for a cost-effective drone jammer to meet critical military needs, exploring RF signal blocking and low-cost hardware solutions for effective, accessible defense.",
-      image: "/portfolio/images/projects-in-motion/drone-jammer.jpg"
+      image: `${basePath}/images/projects-in-motion/drone-jammer.jpg`
     },
     {
       name: "Automated MT5 Trading Platform",
       description: "Created an automated trading system for MT5 with impressive returns (17% annual profit) using MQL5 and algorithmic trading strategies. The next phase focuses on refining risk management and optimizing drawdown, enhancing stability through advanced strategy adjustments.",
-      image: "/portfolio/images/projects-in-motion/mt5-trading.jpg"
+      image: `${basePath}/images/projects-in-motion/mt5-trading.jpg`
     },
     {
       name: "LLM Model Evaluation",
       description: "Testing top AI models, including GPT-4o, o1-preview, Claude 3.5 Sonnet, and Gemini, to evaluate their capabilities in technical consultation, problem-solving, and language understanding, aiming to stay updated with the latest advancements in large language model technology.",
-      image: "/portfolio/images/projects-in-motion/llm-evaluation.jpg"
+      image: `${basePath}/images/projects-in-motion/llm-evaluation.jpg`
     },
     {
       name: "Personal Portfolio Website",
       description: "Building a dynamic, multi-page portfolio website with React Next.js, designed to be fully responsive and showcase expertise in modern web development technologies.",
-      image: "/portfolio/images/projects-in-motion/portfolio-website.jpg"
+      image: `${basePath}/images/projects-in-motion/portfolio-website.jpg`
     },
     {
       name: "AI-Based IDE Evaluation",
       description: "Investigating cutting-edge AI-enhanced coding tools like VS Code + Cline, GitHub Copilot, Bolt.new, and Cursor AI to improve development efficiency and integrate AI insights directly into the coding process.",
-      image: "/portfolio/images/projects-in-motion/ide-evaluation.jpg"
+      image: `${basePath}/images/projects-in-motion/ide-evaluation.jpg`
     },
     {
       name: "AI Agent for Market and Competitor Analysis",
       description: "Planning a smart AI agent to track and analyze market and competitor trends in real-time. This project will use data scraping, NLP, and machine learning technologies to provide actionable insights for competitive advantage.",
-      image: "/portfolio/images/projects-in-motion/market-analysis.jpg"
+      image: `${basePath}/images/projects-in-motion/market-analysis.jpg`
     },
     {
       name: "AI Signal Integration for Automatic Trade Execution",
       description: "Developing an AI-driven tool to autonomously capture and execute signals from providers (e.g., Telegram), implementing NLP and automated order placement for seamless trading without human intervention.",
-      image: "/portfolio/images/projects-in-motion/signal-integration.jpg"
+      image: `${basePath}/images/projects-in-motion/signal-integration.jpg`
     }
   ];
 
@@ -143,7 +147,7 @@ export default function ProjectsInMotion() {
                   onError={(e) => {
                     // Fallback to a default image if the image fails to load
                     const target = e.target as HTMLImageElement;
-                    target.src = '/portfolio/images/default-project.jpg';
+                    target.src = `${basePath}/images/default-project.jpg`;
                   }}
                 />
               </div>
@@ -181,7 +185,7 @@ export default function ProjectsInMotion() {
                   onError={(e) => {
                     // Fallback to a default image if the image fails to load
                     const target = e.target as HTMLImageElement;
-                    target.src = '/portfolio/images/default-project.jpg';
+                    target.src = `${basePath}/images/default-project.jpg`;
                   }}
                 />
               </div>

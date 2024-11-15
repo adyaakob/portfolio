@@ -1,17 +1,14 @@
-import Hero from './Hero'
-import About from './About'
-import Experience from './Experience'
-import Projects from './Projects'
-import Contact from './Contact'
-
-export default function Sections() {
-  return (
-    <>
-      <Hero />
-      <About />
-      <Experience />
-      <Projects />
-      <Contact />
-    </>
-  );
-} 
+export { default as Hero } from './Hero'
+export { default as About } from './About'
+export { default as Skills } from './Skills'
+export { default as Experience } from './Experience'
+export { default as Projects } from './Projects'
+export { default as Education } from './Education'
+export { default as Certifications } from './Certifications'
+export { default as Contact } from './Contact'
+export { default as Courses } from './Courses'
+export { default as ProjectsInMotion } from './ProjectsInMotion'
+export { default as ToolsTechnologies } from './ToolsTechnologies'
+export { default as References } from './References'
+export { default as Timeline } from './Timeline'
+export { default as Methodology } from './Methodology'
