@@ -1,5 +1,6 @@
 'use client'
 
+import { useTheme } from 'next-themes'
 import Image from 'next/image'
 
 // Break down into components for better maintainability
@@ -17,6 +18,13 @@ import Courses from '@/components/sections/Courses'
 import ProjectsInMotion from '@/components/sections/ProjectsInMotion'
 
 export default function Home() {
+  const { theme, systemTheme } = useTheme()
+  
+  // Add these console logs
+  console.log('Current theme:', theme)
+  console.log('System theme:', systemTheme)
+  console.log('localStorage theme:', typeof window !== 'undefined' ? localStorage.getItem('theme') : null)
+
   return (
     <main className="min-h-screen bg-white dark:bg-gradient-to-br dark:from-gray-900 dark:to-gray-800 text-gray-900 dark:text-white print:bg-white print:text-black">
       <Navbar />
