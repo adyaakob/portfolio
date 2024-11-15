@@ -1,7 +1,7 @@
 'use client';
 
 import { useRef } from 'react';
-import PrintButton from '@/components/ui/PrintButton';
+import PrintButton from './components/PrintButton';
 
 export default function ClientLayout({
   children,
