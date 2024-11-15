@@ -2,6 +2,7 @@
 
 import { useTheme } from 'next-themes'
 import Navbar from '@/components/Navbar'
+import PersonalInterests from '@/components/PersonalInterests'
 import {
   Hero,
   About,
@@ -39,6 +40,7 @@ export default function Home() {
         <Education />
         <Certifications />
         <Courses />
+        <PersonalInterests />
         <References />
         <Contact />
       </div>
