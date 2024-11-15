@@ -5,9 +5,12 @@ const experienceData = require('../../data/experience');
 interface Job {
   title: string;
   company: string;
-  date: string;
+  type: string;
+  period: string;
+  duration: string;
+  location?: string;
+  logo?: string;
   responsibilities: string[];
-  // add other properties as needed
 }
 
 export default function Experience() {
