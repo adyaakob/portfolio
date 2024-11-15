@@ -4,13 +4,13 @@ import SectionTitle from '../SectionTitle'
 const educationData = [
   {
     institution: "University of Plymouth",
-    logo: "/images/education/plymouth-logo.png",
+    logo: "/images/education/plymouth-logo.jpg",
     degree: "B.Eng (Hons), Electrical and Electronics Engineering",
     period: "1995 - 1997",
   },
   {
     institution: "Universiti Teknologi Malaysia",
-    logo: "/images/education/utm-logo.png",
+    logo: "/images/education/utm-logo.jpg",
     degree: "Diploma in Electrical Engineering (Communications)",
     period: "1991 - 1994",
   },

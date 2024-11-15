@@ -38,8 +38,8 @@ export default function Experience() {
                 {job.logo && (
                   <div className="flex-shrink-0 w-16 h-16 bg-white rounded-full p-2 flex items-center justify-center">
                     <Image
-                      src={getImagePath('/images/companies/sapura-thales.png')}
-                      alt="Sapura Thales"
+                      src={job.logo || '/images/companies/default-logo.jpg'}
+                      alt={job.company}
                       width={200}
                       height={100}
                       className="rounded-full object-contain"

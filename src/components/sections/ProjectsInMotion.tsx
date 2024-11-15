@@ -131,6 +131,11 @@ export default function ProjectsInMotion() {
                   fill
                   className="object-cover"
                   sizes="(max-width: 768px) 100vw, 50vw"
+                  onError={(e) => {
+                    // Fallback to a default image if the image fails to load
+                    const target = e.target as HTMLImageElement;
+                    target.src = '/images/default-project.jpg';
+                  }}
                 />
               </div>
               <div className="p-6">
@@ -164,6 +169,11 @@ export default function ProjectsInMotion() {
                   fill
                   className="object-cover"
                   sizes="(max-width: 768px) 100vw, 50vw"
+                  onError={(e) => {
+                    // Fallback to a default image if the image fails to load
+                    const target = e.target as HTMLImageElement;
+                    target.src = '/images/default-project.jpg';
+                  }}
                 />
               </div>
               <div className="p-6">
