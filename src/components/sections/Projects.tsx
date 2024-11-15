@@ -16,7 +16,7 @@ const projectsData = [
     title: "Combat Net Radio CNR9 and CNR10",
     period: "Jan 2010 - Jan 2020",
     date: "Jan 2010 - Jan 2020",
-    image: "/images/cnr9-10.jpg",
+    image: "/portfolio/images/cnr9-10.jpg",
     description: ""
   },
   {
