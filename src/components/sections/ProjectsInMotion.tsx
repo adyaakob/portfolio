@@ -143,7 +143,7 @@ export default function ProjectsInMotion() {
                   onError={(e) => {
                     // Fallback to a default image if the image fails to load
                     const target = e.target as HTMLImageElement;
-                    target.src = '/images/default-project.jpg';
+                    target.src = '/portfolio/images/default-project.jpg';
                   }}
                 />
               </div>
@@ -181,7 +181,7 @@ export default function ProjectsInMotion() {
                   onError={(e) => {
                     // Fallback to a default image if the image fails to load
                     const target = e.target as HTMLImageElement;
-                    target.src = '/images/default-project.jpg';
+                    target.src = '/portfolio/images/default-project.jpg';
                   }}
                 />
               </div>

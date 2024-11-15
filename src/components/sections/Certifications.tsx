@@ -6,13 +6,13 @@ const certificationsData = [
     title: "Basic Fire Fighting & Emergency Response Plan",
     issuer: "Asian First Aid Academy",
     issueDate: "Issued Jan 2020",
-    image: "/images/certifications/fire-fighting.jpg"
+    image: "/portfolio/images/certifications/fire-fighting.jpg"
   },
   {
     title: "Occupational First Aider Certification",
     issuer: "Asian First Aid Academy",
     issueDate: "Issued Jan 2020",
-    image: "/images/certifications/first-aid.jpg"
+    image: "/portfolio/images/certifications/first-aid.jpg"
   }
 ]
 
