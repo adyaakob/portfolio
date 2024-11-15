@@ -1,6 +1,15 @@
 import Image from 'next/image';
 const experienceData = require('../../data/experience');
 
+// First, define an interface for your job data
+interface Job {
+  title: string;
+  company: string;
+  date: string;
+  responsibilities: string[];
+  // add other properties as needed
+}
+
 export default function Experience() {
   if (!Array.isArray(experienceData)) {
     console.error('Experience data is not an array:', experienceData);
@@ -16,7 +25,7 @@ export default function Experience() {
         
         {/* Experience items - increased max width */}
         <div className="max-w-4xl mx-auto space-y-6">
-          {experienceData.map((job, index) => (
+          {experienceData.map((job: Job, index: number) => (
             <div 
               key={index} 
               className="bg-white dark:bg-gray-800 p-6 rounded-lg shadow-sm"
@@ -42,7 +51,7 @@ export default function Experience() {
               </div>
               
               <ul className="list-disc pl-5 space-y-2 text-gray-600 dark:text-gray-400">
-                {job.responsibilities.map((item, idx) => (
+                {job.responsibilities.map((item: string, idx: number) => (
                   <li key={idx} className="flex items-start">
                     <span className="mr-2">•</span>
                     <span>{item}</span>
