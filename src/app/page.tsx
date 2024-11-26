@@ -3,6 +3,7 @@
 import { useTheme } from 'next-themes'
 import Navbar from '@/components/Navbar'
 import PersonalInterests from '@/components/PersonalInterests'
+import dynamic from 'next/dynamic'
 import {
   Hero,
   About,
@@ -18,8 +19,9 @@ import {
   References,
   Methodology,
   STETimeline,
-  WorldMap
 } from '@/components/sections'
+
+const WorldMap = dynamic(() => import('@/components/sections/WorldMap'), { ssr: false })
 
 export default function Home() {
   const { theme } = useTheme()

@@ -1,3 +1,5 @@
+'use client'
+
 import Image from 'next/image'
 import { getBasePath } from '@/lib/utils'
 import Link from 'next/link'
