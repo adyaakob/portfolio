@@ -1,6 +1,6 @@
-import TimelineItem from './TimelineItem.tsx'
-import SectionTitle from './SectionTitle.tsx'
-import { TimelineData } from '@/data/timelineData.tsx'
+import TimelineItem from './TimelineItem'
+import SectionTitle from './SectionTitle'
+import { TimelineData } from '@/data/timelineData'
 
 interface TimelineProps {
   items: TimelineData[]

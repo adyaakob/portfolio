@@ -1,7 +1,7 @@
 'use client'
 
-import Timeline from '../Timeline.tsx'
-import { steProjects } from '@/data/timelineData.tsx'
+import Timeline from '../Timeline'
+import { steProjects } from '@/data/timelineData'
 
 export default function STEProjects() {
   return (
