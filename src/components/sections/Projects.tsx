@@ -44,25 +44,28 @@ const projectsData = [
     description: "Thales, through its joint venture STE, is part of the AV8 programme for the Royal Malaysian Army. STE provides communication, vetronics, sensors, command & control, mortar, and optronics"
   },
   {
-    title: "Radio Communication Installation for 4x4 Lipan Bara",
-    period: "Jan 2015 - Dec 2015",
-    date: "Jan 2015 - Dec 2015",
+    title: "Radio Communications Solution for various Armoured Vehicles",
+    period: "2010 - 2018",
+    date: "2010 - 2018",
     image: `${basePath}/images/projects/lipan-bara.jpg`,
-    description: ""
+    description: "Led the development and implementation of tactical communication solutions for multiple armoured vehicle platforms including ADNAN, MIFV, BUMAR, AV8, SCORPION, PT91, and various 6x6 and 4x4 vehicles. The solutions encompassed radio integration, intercom systems, antenna systems, and command & control interfaces, ensuring robust battlefield communications across different military platforms."
   },
   {
     title: "TRC5100 Tactical VHF Handheld",
     period: "Jan 1997 - Jan 2015",
     date: "Jan 1997 - Jan 2015",
     image: `${basePath}/images/projects/trc5100.jpg`,
-    description: "First-generation of tactical handheld, designed and produced locally"
+    description: "Pioneered the development of Malaysia's first locally designed and manufactured tactical VHF handheld radio. The TRC5100 featured encrypted voice communications, frequency skipping capabilities, and ruggedized design for military operations. This groundbreaking project established local expertise in military radio development, with over 1000 units deployed across Malaysian Armed Forces, marking a significant milestone in Malaysia's defense industry capabilities."
   }
 ]
 
 export default function Projects() {
   return (
     <section id="projects" className="pt-20 -mt-20">
-      <SectionTitle>Projects</SectionTitle>
+      <SectionTitle>Strategic Defense Projects Portfolio</SectionTitle>
+      <p className="text-gray-600 dark:text-gray-400 text-center max-w-3xl mx-auto mb-8">
+        Showcasing key military and defense communication projects that demonstrate expertise in tactical systems, radio development, and strategic implementations.
+      </p>
       
       <div className="max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-8">
         {projectsData.map((project, index) => (

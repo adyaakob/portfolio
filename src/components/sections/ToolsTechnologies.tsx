@@ -28,6 +28,8 @@ const toolsData: ToolCategory[] = [
       { name: "Bolt.new", logo: "/images/tools/bolt.png" },
       { name: "GitHub Copilot", logo: "/images/tools/github-copilot.png" },
       { name: "GitHub", logo: "/images/tools/github.png" },
+      { name: "V0 by Vercel", logo: "/images/tools/v0.png" },
+      { name: "Windsurf", logo: "/images/tools/windsurf.png" },
     ]
   },
   {

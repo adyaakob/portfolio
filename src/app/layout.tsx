@@ -1,6 +1,7 @@
 import { ThemeProvider } from '@/components/providers/ThemeProvider'
 import type { Metadata } from 'next'
 import '@/app/globals.css'
+import 'react-vertical-timeline-component/style.min.css'
 
 export const metadata: Metadata = {
   title: 'Ahmad Dahalan Yaakob',

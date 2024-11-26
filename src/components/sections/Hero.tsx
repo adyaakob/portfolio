@@ -1,101 +1,73 @@
 import Image from 'next/image'
-import PrintButton from '../PrintButton'
 import { getBasePath } from '@/lib/utils'
-import { FaEnvelope, FaPhone, FaCalendar } from 'react-icons/fa'
+import Link from 'next/link'
+import html2pdf from 'html2pdf.js'
 
 export default function Hero() {
   const basePath = getBasePath()
-  
-  // Calculate age dynamically
-  const calculateAge = () => {
-    const birthDate = new Date('1973-01-03');
-    const today = new Date();
-    let age = today.getFullYear() - birthDate.getFullYear();
-    const monthDiff = today.getMonth() - birthDate.getMonth();
-    
-    if (monthDiff < 0 || (monthDiff === 0 && today.getDate() < birthDate.getDate())) {
-      age--;
-    }
-    
-    return age;
+
+  const handlePrint = () => {
+    window.print();
   };
 
   return (
-    <section className="pt-20 text-center">
-      <div className="container mx-auto px-4">
-        {/* Profile Image */}
-        <div className="w-48 h-48 relative rounded-full overflow-hidden mx-auto mb-8">
+    <section className="py-8">
+      <div className="max-w-3xl mx-auto text-center">
+        <div className="relative w-32 h-32 mx-auto mb-6">
           <Image
-            src={`${basePath}/profile.jpg`}
+            src={`${basePath}/images/profile.jpg`}
             alt="Profile"
-            width={300}
-            height={300}
-            className="object-cover"
+            width={128}
+            height={128}
+            className="rounded-full object-cover"
             priority
+            quality={85}
           />
         </div>
 
-        {/* Text Content */}
-        <p className="text-purple-600 dark:text-purple-400 mb-4">I&apos;m</p>
-        <h1 className="text-4xl md:text-5xl font-bold bg-gradient-to-r from-[#38BDF8] to-[#E879F9] bg-clip-text text-transparent">
+        <p className="text-purple-600 dark:text-purple-400 mb-2">I&apos;m</p>
+        
+        <h1 className="text-4xl font-bold mb-2 bg-gradient-to-r from-blue-500 via-purple-500 to-purple-400 bg-clip-text text-transparent">
           Ahmad Dahalan Yaakob
         </h1>
-        <h2 className="text-2xl md:text-3xl font-bold text-gray-600 dark:text-gray-400 mb-6 max-w-3xl mx-auto">
-          Experienced R&D and Product Management Leader in Defense Communications
-        </h2>
-        <p className="text-gray-700 dark:text-gray-300 max-w-3xl mx-auto mb-8 text-lg">
-          A highly accomplished professional with over 25 years of experience in the defense 
-          and telecommunications industries. I have a proven track record of success in leading 
-          and managing multidisciplinary teams to develop and deliver cutting-edge communication 
-          solutions for military and government clients. I am passionate about driving innovation 
-          and delivering high-quality products that meet the most demanding requirements.
-        </p>
         
-        {/* Personal Information */}
-        <div className="flex flex-wrap justify-center items-center gap-x-6 gap-y-2 mb-8 print:mb-6 print:gap-x-4 print:text-sm">
-          <div className="flex items-center gap-2 text-gray-600 dark:text-gray-300 whitespace-nowrap">
-            <FaCalendar className="w-4 h-4 text-purple-600 dark:text-purple-400" />
-            <span className="text-sm">{calculateAge()} years old</span>
-          </div>
-          
-          <div className="flex items-center gap-2 text-gray-600 dark:text-gray-300 whitespace-nowrap">
-            <FaPhone className="w-4 h-4 text-purple-600 dark:text-purple-400" />
-            <a 
-              href="tel:+60102369037" 
-              className="text-sm hover:text-purple-600 dark:hover:text-purple-400 transition-colors print:hover:text-current"
-            >
-              +60 102369037
-            </a>
-          </div>
-          
-          <div className="flex items-center gap-2 text-gray-600 dark:text-gray-300 whitespace-nowrap">
-            <FaEnvelope className="w-4 h-4 text-purple-600 dark:text-purple-400" />
-            <a 
-              href="mailto:adyaakob@gmail.com" 
-              className="text-sm hover:text-purple-600 dark:hover:text-purple-400 transition-colors print:hover:text-current"
-            >
-              adyaakob@gmail.com
-            </a>
-          </div>
+        <h2 className="text-2xl font-bold mb-6 text-gray-700 dark:text-gray-300">
+          Experienced R&D and Product Management Professional in Defense Communications
+        </h2>
+        
+        <p className="text-gray-700 dark:text-gray-300 leading-relaxed mb-8">
+          I bring over 25 years of experience in defense, telecommunications, and emerging technologies, 
+          with a strong interest in Artificial Intelligence (AI) as a key driver for my career development, 
+          aiming to bring transformative benefits to various industries. Throughout my career, I&apos;ve 
+          successfully led multidisciplinary teams to create advanced communication solutions for military 
+          and government clients. I am passionate about technology, innovation, and exploring AI&apos;s potential 
+          to benefit not only defense but also other industries, consistently striving to deliver high-quality, 
+          impactful solutions.
+        </p>
+
+        <div className="flex items-center justify-center gap-4 text-sm text-gray-600 dark:text-gray-400 mb-8">
+          <span>51 years old</span>
+          <span>+60 102369037</span>
+          <span>adyaakob@gmail.com</span>
         </div>
 
-        {/* Action buttons group */}
-        <div className="flex flex-wrap justify-center gap-4 mt-8">
-          <a 
-            href="#experience" 
-            className="px-6 py-3 bg-purple-500 text-white rounded-full hover:bg-purple-600 transition-colors"
+        <div className="flex justify-center gap-4">
+          <Link href="#experience">
+            <button className="px-6 py-2 bg-purple-600 text-white rounded-full hover:bg-blue-400 transition-colors">
+              View Experience
+            </button>
+          </Link>
+          <Link href="#contact">
+            <button className="px-6 py-2 border border-purple-600 text-purple-600 rounded-full hover:bg-blue-100 dark:hover:bg-blue-400/10 transition-colors">
+              Contact Me
+            </button>
+          </Link>
+          <button 
+            onClick={handlePrint}
+            className="px-6 py-2 border border-purple-600 text-purple-600 rounded-full hover:bg-blue-100 dark:hover:bg-blue-400/10 transition-colors"
           >
-            View Experience
-          </a>
-          
-          <a 
-            href="#contact" 
-            className="px-6 py-3 border border-purple-500 text-purple-500 rounded-full hover:bg-purple-500 hover:text-white transition-colors"
-          >
-            Contact Me
-          </a>
-          
-          <PrintButton className="px-6 py-3 border border-purple-500 text-purple-500 rounded-full hover:bg-purple-500 hover:text-white transition-colors" />
+            Save as PDF
+          </button>
         </div>
       </div>
     </section>
