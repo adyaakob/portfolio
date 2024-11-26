@@ -5,6 +5,12 @@ const nextConfig = {
   images: {
     domains: ['flagcdn.com'],
   },
+  // Configure build output directory
+  distDir: '.next',
+  // Enable SWC compilation cache
+  compiler: {
+    styledComponents: true,
+  },
 }
 
 module.exports = nextConfig

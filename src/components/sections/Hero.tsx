@@ -9,7 +9,9 @@ export default function Hero() {
   const basePath = getBasePath()
 
   const handlePrint = () => {
-    window.print();
+    if (typeof window !== 'undefined') {
+      window.print();
+    }
   };
 
   return (

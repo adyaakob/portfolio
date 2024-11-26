@@ -2,7 +2,9 @@
 
 export default function PrintButton() {
   const handlePrint = () => {
-    window.print()
+    if (typeof window !== 'undefined') {
+      window.print()
+    }
   }
 
   return (
@@ -19,4 +21,4 @@ export default function PrintButton() {
       </div>
     </button>
   )
-} 
+}

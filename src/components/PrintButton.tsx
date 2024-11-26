@@ -6,7 +6,9 @@ interface PrintButtonProps {
 
 export default function PrintButton({ className }: PrintButtonProps) {
   const handlePrint = () => {
-    window.print();
+    if (typeof window !== 'undefined') {
+      window.print();
+    }
   };
 
   return (
