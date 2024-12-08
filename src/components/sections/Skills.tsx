@@ -20,8 +20,7 @@ const skillsData = {
     "Tactical Network Architecture",
     "Military Platform Integration",
     "System Performance Analysis",
-    "Technical Documentation & Specifications",
-    "Integration, Verification, Validation & Qualification (IVVQ)"
+    "Technical Documentation & Specifications"
   ],
   "Business Development": [
     "Technical Proposal Development",
@@ -61,8 +60,7 @@ export default function Skills() {
         "Tactical Network Architecture",
         "Military Platform Integration",
         "System Performance Analysis",
-        "Technical Documentation & Specifications",
-        "Integration, Verification, Validation & Qualification (IVVQ)"
+        "Technical Documentation & Specifications"
       ]
     },
     {
