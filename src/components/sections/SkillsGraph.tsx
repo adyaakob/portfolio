@@ -15,10 +15,10 @@ interface Skill {
 
 const skillsData: Skill[] = [
   // Core Defense & Military Technology (Priority 1)
-  { id: "MIL COMMS", group: "Defense", level: 5, priority: 1, connections: ["RADIO SYS", "SYS INTEG", "IVVT"] },
-  { id: "RADIO SYS", group: "Defense", level: 5, priority: 1, connections: ["ELEC", "SW DEV", "IVVT"] },
-  { id: "TAC SYS", group: "Defense", level: 5, priority: 1, connections: ["SYS INTEG", "IVVT"] },
-  { id: "IVVT", group: "Defense", level: 5, priority: 1, connections: ["SYS ENG"] },
+  { id: "MIL COMMS", group: "Defense", level: 5, priority: 1, connections: ["RADIO SYS", "SYS INTEG", "IVVQ"] },
+  { id: "RADIO SYS", group: "Defense", level: 5, priority: 1, connections: ["ELEC", "SW DEV", "IVVQ"] },
+  { id: "TAC SYS", group: "Defense", level: 5, priority: 1, connections: ["SYS INTEG", "IVVQ"] },
+  { id: "IVVQ", group: "Defense", level: 5, priority: 1, connections: ["SYS ENG"] },
   
   // Core Technical Skills (Priority 1)
   { id: "SYS INTEG", group: "Technical", level: 5, priority: 1, connections: ["PROJ MGT", "SW DEV", "SYS ENG"] },
