@@ -24,7 +24,11 @@ import {
 const WorldMap = dynamic(() => import('@/components/sections/WorldMap'), { ssr: false })
 const SkillsGraph = dynamic(() => import('@/components/sections/SkillsGraph'), { ssr: false })
 
-export default function ClientSideApp() {
+interface ClientSideAppProps {
+  children: React.ReactNode;
+}
+
+export default function ClientSideApp({ children }: ClientSideAppProps) {
   const { theme } = useTheme()
   
   return (
@@ -32,6 +36,7 @@ export default function ClientSideApp() {
       <Navbar />
       
       <div id="content-to-capture" className="max-w-[21cm] mx-auto px-4 space-y-4 print:space-y-2 print:max-w-none print:px-0">
+        {children}
         <Hero />
         <About />
         <SkillsGraph />

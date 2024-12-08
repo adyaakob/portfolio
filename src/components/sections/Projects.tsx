@@ -99,11 +99,16 @@ export default function Projects() {
               {/* Print version */}
               <div className="hidden print:block w-full mb-6">
                 <div className="h-40 relative">
-                  <img
+                  <Image
                     src={`${basePath}${project.image}`}
                     alt={project.title}
+                    fill
                     className="w-full h-full object-cover rounded-lg"
                     style={{ pageBreakInside: 'avoid' }}
+                    sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+                    priority={true}
+                    loading="eager"
+                    quality={40}
                   />
                 </div>
               </div>

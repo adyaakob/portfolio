@@ -1,19 +1,27 @@
-'use client'
-
-import { useEffect, useRef, useState } from 'react';
+import { useEffect, useRef, useState, useMemo } from 'react';
 import SectionTitle from '../SectionTitle';
 import * as d3 from 'd3';
 
-interface Skill {
+interface D3Node extends d3.SimulationNodeDatum {
   id: string;
   group: string;
   level: number;
   priority: number;
   connections: string[];
   isSpecial?: boolean;
+  x?: number;
+  y?: number;
+  fx?: number | null;
+  fy?: number | null;
 }
 
-const skillsData: Skill[] = [
+interface LinkType {
+  source: string | D3Node;
+  target: string | D3Node;
+  priority: number;
+}
+
+const skillsData: D3Node[] = [
   // Core Defense & Military Technology (Priority 1)
   { id: "MIL COMMS", group: "Defense", level: 5, priority: 1, connections: ["RADIO SYS", "SYS INTEG", "IVVQ"] },
   { id: "RADIO SYS", group: "Defense", level: 5, priority: 1, connections: ["ELEC", "SW DEV", "IVVQ"] },
@@ -47,21 +55,19 @@ export default function SkillsGraph() {
   const svgRef = useRef<SVGSVGElement>(null);
   const [mounted, setMounted] = useState(false);
 
-  // Color mapping using Tailwind colors with higher opacity
-  const colorMapping = {
-    Defense: "rgba(147, 197, 253, 0.95)",   // blue-300
-    Technical: "rgba(110, 231, 183, 0.95)",  // emerald-300
-    Management: "rgba(251, 146, 160, 0.95)", // rose-300
-    Creative: "rgba(253, 186, 116, 0.95)"    // orange-300
-  };
+  const colorMapping = useMemo(() => ({
+    Defense: "rgba(147, 197, 253, 0.95)",
+    Technical: "rgba(110, 231, 183, 0.95)",
+    Management: "rgba(251, 146, 160, 0.95)",
+    Creative: "rgba(253, 186, 116, 0.95)"
+  }), []);
 
-  // Darker edge colors for better contrast
-  const edgeColors = {
-    Defense: "rgba(30, 58, 138, 1)",   // blue-900
-    Technical: "rgba(6, 78, 59, 1)",   // emerald-900
-    Management: "rgba(136, 19, 55, 1)", // rose-900
-    Creative: "rgba(124, 45, 18, 1)"    // orange-900
-  };
+  const edgeColors = useMemo(() => ({
+    Defense: "rgba(30, 58, 138, 1)",
+    Technical: "rgba(6, 78, 59, 1)",
+    Management: "rgba(136, 19, 55, 1)",
+    Creative: "rgba(124, 45, 18, 1)"
+  }), []);
 
   useEffect(() => {
     setMounted(true);
@@ -74,38 +80,37 @@ export default function SkillsGraph() {
     const height = 700;
     const padding = 80;
 
-    // Clear previous SVG content
     d3.select(svgRef.current).selectAll("*").remove();
 
-    // Background gradient based on theme
     const svg = d3.select(svgRef.current)
       .attr("viewBox", `0 0 ${width} ${height}`)
       .attr("preserveAspectRatio", "xMidYMid meet")
       .style("background", "var(--graph-bg)");
 
-    const simulation = d3.forceSimulation(skillsData)
-      .force("link", d3.forceLink().id((d: any) => d.id).distance(100))
+    const simulation = d3.forceSimulation<D3Node>(skillsData)
       .force("charge", d3.forceManyBody().strength(-1000))
       .force("center", d3.forceCenter(width / 2, height / 2))
       .force("x", d3.forceX(width / 2).strength(0.1))
       .force("y", d3.forceY(height / 2).strength(0.1))
-      .force("collision", d3.forceCollide().radius(d => {
-        if (d.id === "AI") return 60;  // Increased collision radius for AI
-        return 50;  // Increased general collision radius
-      }));
+      .force("collision", d3.forceCollide<D3Node>().radius(d => d.id === "AI" ? 60 : 50));
 
-    const links = skillsData.flatMap(skill =>
+    const links = skillsData.flatMap(skill => 
       skill.connections.map(target => ({
         source: skill.id,
         target,
         priority: skill.priority
-      }))
+      } as LinkType))
     );
+
+    const linkForce = d3.forceLink<D3Node, LinkType>()
+      .id(d => d.id)
+      .distance(100)
+      .links(links);
+
+    simulation.force("link", linkForce);
 
     // Add glow effect
     const defs = svg.append("defs");
-    
-    // Create glow filter
     const filter = defs.append("filter")
       .attr("id", "glow")
       .attr("x", "-50%")
@@ -119,61 +124,53 @@ export default function SkillsGraph() {
       .attr("result", "coloredBlur");
 
     const feMerge = filter.append("feMerge");
-    feMerge.append("feMergeNode")
-      .attr("in", "coloredBlur");
-    feMerge.append("feMergeNode")
-      .attr("in", "SourceGraphic");
+    feMerge.append("feMergeNode").attr("in", "coloredBlur");
+    feMerge.append("feMergeNode").attr("in", "SourceGraphic");
 
-    // Links with better contrast
     const link = svg.append("g")
       .selectAll("line")
       .data(links)
       .join("line")
-      .attr("stroke", "#94a3b8")  // slate-400 for better visibility
+      .attr("stroke", "#94a3b8")
       .attr("stroke-width", 2)
       .attr("opacity", 0.7)
       .attr("filter", "url(#glow)");
 
     const node = svg.append("g")
-      .selectAll("g")
+      .selectAll<SVGGElement, D3Node>("g")
       .data(skillsData)
       .join("g")
-      .call(d3.drag<any, any>()
-        .on("start", (event, d) => {
+      .call(d3.drag<SVGGElement, D3Node>()
+        .on("start", (event: d3.D3DragEvent<SVGGElement, D3Node, D3Node>, d: D3Node) => {
           if (!event.active) simulation.alphaTarget(0.3).restart();
-          d.fx = d.x;
-          d.fy = d.y;
-        })
-        .on("drag", (event, d) => {
           d.fx = event.x;
           d.fy = event.y;
         })
-        .on("end", (event, d) => {
+        .on("drag", (event: d3.D3DragEvent<SVGGElement, D3Node, D3Node>, d: D3Node) => {
+          d.fx = event.x;
+          d.fy = event.y;
+        })
+        .on("end", (event: d3.D3DragEvent<SVGGElement, D3Node, D3Node>, d: D3Node) => {
           if (!event.active) simulation.alphaTarget(0);
           d.fx = null;
           d.fy = null;
-        }));
+        })
+      );
 
-    // Background circles with stronger glow
     node.append("circle")
       .attr("r", d => 48 + d.id.length)
       .attr("fill", d => edgeColors[d.group as keyof typeof edgeColors])
       .attr("opacity", 0.3)
       .attr("filter", "url(#glow)");
 
-    // Colored circles with better contrast
     node.append("circle")
-      .attr("r", d => {
-        if (d.id === "AI") return 50;
-        return 40 + d.level * 3 + (d.priority === 1 ? 8 : 0);
-      })
+      .attr("r", d => d.id === "AI" ? 50 : 40 + d.level * 3 + (d.priority === 1 ? 8 : 0))
       .attr("fill", d => colorMapping[d.group as keyof typeof colorMapping])
       .attr("filter", "url(#glow)")
       .attr("stroke", d => edgeColors[d.group as keyof typeof edgeColors])
       .attr("stroke-width", 3)
       .attr("opacity", 1);
 
-    // Text with enhanced visibility and theme-aware colors
     node.append("text")
       .text(d => d.id)
       .attr("text-anchor", "middle")
@@ -181,10 +178,7 @@ export default function SkillsGraph() {
       .attr("fill", "var(--text-primary)")
       .style("font-family", "'Inter', 'Outfit', 'SF Pro Display', system-ui, sans-serif")
       .style("font-weight", "600")
-      .style("font-size", d => {
-        if (d.id === "AI") return "18px";
-        return d.priority === 1 ? "16px" : "15px";
-      })
+      .style("font-size", d => d.id === "AI" ? "18px" : d.priority === 1 ? "16px" : "15px")
       .style("letter-spacing", "0.02em")
       .style("text-shadow", "var(--text-shadow)")
       .style("paint-order", "stroke")
@@ -192,25 +186,23 @@ export default function SkillsGraph() {
       .style("stroke-width", "2px");
 
     simulation.on("tick", () => {
-      node.attr("transform", (d: any) => {
-        d.x = Math.max(padding, Math.min(width - padding, d.x));
-        d.y = Math.max(padding, Math.min(height - padding, d.y));
-        return `translate(${d.x},${d.y})`;
-      });
-
       link
-        .attr("x1", (d: any) => d.source.x)
-        .attr("y1", (d: any) => d.source.y)
-        .attr("x2", (d: any) => d.target.x)
-        .attr("y2", (d: any) => d.target.y);
-    });
+        .attr("x1", d => (d.source as D3Node).x!)
+        .attr("y1", d => (d.source as D3Node).y!)
+        .attr("x2", d => (d.target as D3Node).x!)
+        .attr("y2", d => (d.target as D3Node).y!);
 
-    simulation.force<d3.ForceLink<any, any>>("link")!.links(links);
+      node.attr("transform", d => {
+        const x = Math.max(padding, Math.min(width - padding, d.x!));
+        const y = Math.max(padding, Math.min(height - padding, d.y!));
+        return `translate(${x},${y})`;
+      });
+    });
 
     return () => {
       simulation.stop();
     };
-  }, [mounted]);
+  }, [mounted, colorMapping, edgeColors]);
 
   return (
     <section id="skills-graph" className="py-16">
@@ -225,24 +217,24 @@ export default function SkillsGraph() {
               --graph-bg: linear-gradient(to bottom right, rgb(17, 24, 39), rgb(7, 10, 16));
             }
           `}</style>
-          <svg
-            ref={svgRef}
-            className="w-full h-[700px]"
+          <svg 
+            ref={svgRef} 
+            className="w-full h-[700px]" 
             style={{ 
               maxHeight: '80vh',
               fontFamily: "'Inter', 'Outfit', 'SF Pro Display', system-ui, sans-serif"
-            }}
+            }} 
           />
           <div className="mt-8 flex flex-wrap gap-4 justify-center">
             {Object.keys(colorMapping).map((group) => (
               <div key={group} className="flex items-center">
-                <div
+                <div 
                   className="w-6 h-6 rounded-full mr-3"
-                  style={{
-                    backgroundColor: colorMapping[group as keyof typeof colorMapping]
-                  }}
+                  style={{ backgroundColor: colorMapping[group as keyof typeof colorMapping] }}
                 />
-                <span className="text-base font-medium text-gray-800 dark:text-gray-200">{group}</span>
+                <span className="text-base font-medium text-gray-800 dark:text-gray-200">
+                  {group}
+                </span>
               </div>
             ))}
           </div>
