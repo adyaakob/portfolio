@@ -3,9 +3,9 @@ import ContactForm from '../ui/ContactForm';
 
 export default function Contact() {
   return (
-    <section id="contact" className="py-16 bg-gray-50 dark:bg-gray-900 print:py-4">
+    <section id="contact" className="py-16 bg-gray-50 dark:bg-gray-900 print:py-4 print:bg-white">
       <div className="container mx-auto px-4 print:px-0">
-        <h2 className="text-3xl font-bold text-center mb-8 print:mb-4">Get In Touch</h2>
+        <h2 className="text-3xl font-bold text-center mb-8 print:mb-4 print:text-2xl">Get In Touch</h2>
         
         {/* Social Links - Hidden in print */}
         <div className="flex justify-center gap-6 mb-12 print:hidden">
@@ -34,8 +34,8 @@ export default function Contact() {
         </div>
 
         {/* Print-only contact info */}
-        <div className="hidden print:block print:mb-0 text-center">
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-2 max-w-2xl mx-auto">
+        <div className="hidden print:block print:mb-0">
+          <div className="grid grid-cols-1 gap-2 max-w-2xl mx-auto text-center">
             <p className="text-sm">Email: adyaakob@gmail.com</p>
             <p className="text-sm">LinkedIn: linkedin.com/in/ahmaddahalan</p>
             <p className="text-sm">GitHub: github.com/adyaakob</p>
@@ -43,7 +43,7 @@ export default function Contact() {
         </div>
 
         {/* Contact Form - Hidden in print */}
-        <div className="max-w-md mx-auto print:hidden">
+        <div className="max-w-md mx-auto screen-only">
           <ContactForm />
         </div>
       </div>

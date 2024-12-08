@@ -29,7 +29,7 @@ const selfFundedProjects = [
   {
     name: "Windsurf vs Cursor AI IDE Comparison",
     description: "Conducting a dedicated comparison study between Windsurf and Cursor AI development environments, evaluating their unique approaches to AI-assisted coding, real-time suggestions, and developer workflow optimization. This analysis helps determine the most effective tool for modern development needs.",
-    image: `${basePath}/images/projects-in-motion/windsurf-vs-cursor.png`
+    image: `${basePath}/images/projects-in-motion/windsurf-vs-cursor.jpg`
   },
   {
     name: "AI-Based IDE Evaluation",
@@ -59,6 +59,11 @@ const selfFundedProjects = [
 ];
 
 const technicalConsultationProjects = [
+  {
+    name: "IoT Network Infrastructure Technical Consultation",
+    description: "Provided technical consultation for IoT network infrastructure deployment, focusing on LoRaWAN technology. Conducted comprehensive technical proposal evaluations, including network architecture assessment, coverage planning, and hardware specifications. Analyzed commercial proposals for cost-effectiveness and technical feasibility, ensuring alignment with industry standards and client requirements.",
+    image: `${basePath}/images/projects-in-motion/lorawan.jpg`
+  },
   {
     name: "Web-based Marketing Platform for Indo Defence 2025",
     description: "Developing an innovative web-based marketing platform featuring AI-powered assistance, 4K-optimized product displays, and offline capabilities. The solution integrates local and cloud-based LLM models for intelligent product information retrieval, utilizing Next.js, Radix UI, and TypeScript for a robust exhibition-ready experience.",
@@ -94,92 +99,103 @@ const technicalConsultationProjects = [
 export default function ProjectsInMotion() {
   return (
     <section id="projects-in-motion" className="pt-20 -mt-20">
-      <SectionTitle>Projects in Motion (2024)</SectionTitle>
-      
-      <p className="text-gray-700 dark:text-gray-300 mb-8 text-center max-w-3xl mx-auto">
-        Discover my dynamic portfolio of innovative projects, where AI integration meets practical solutions. 
-        From advanced LLM evaluations and AI-powered development tools to defense technology consulting 
-        and automated trading systems, these initiatives reflect my commitment to pushing technological 
-        boundaries while delivering tangible results. Each project showcases the intersection of emerging 
-        technologies with real-world applications, demonstrating expertise in AI, software development, 
-        and technical consultation.
-      </p>
+      <div className="container mx-auto px-[25px]">
+        <SectionTitle>Projects in Motion (2024)</SectionTitle>
+        
+        <p className="text-gray-700 dark:text-gray-300 mb-8 text-center max-w-3xl mx-auto">
+          Discover my dynamic portfolio of innovative projects, where AI integration meets practical solutions. 
+          From advanced LLM evaluations and AI-powered development tools to defense technology consulting 
+          and automated trading systems, these initiatives reflect my commitment to pushing technological 
+          boundaries while delivering tangible results. Each project showcases the intersection of emerging 
+          technologies with real-world applications, demonstrating expertise in AI, software development, 
+          and technical consultation.
+        </p>
 
-      {/* Technical Consultation Section */}
-      <div className="mb-12">
-        <h3 className="text-2xl font-bold text-gray-900 dark:text-white mb-6">
-          Technical Consultation
-        </h3>
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-          {technicalConsultationProjects.map((project, index) => (
-            <div 
-              key={index}
-              className="bg-gray-50 dark:bg-gray-800/50 rounded-lg overflow-hidden shadow-md hover:shadow-xl transition-all duration-300"
-            >
-              <div className="relative aspect-video">
-                {project.image ? (
-                  <Image
-                    src={project.image}
-                    alt={project.name}
-                    fill
-                    className="object-cover"
-                    sizes="(max-width: 768px) 100vw, 50vw"
-                    quality={85}
-                    onError={() => {/* Handle error silently */}}
-                  />
-                ) : (
-                  <DefaultProjectImage />
-                )}
+        {/* Technical Consultation Section */}
+        <div className="mb-12">
+          <h3 className="text-2xl font-bold text-gray-900 dark:text-white mb-6">
+            Technical Consultation
+          </h3>
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+            {technicalConsultationProjects.map((project, index) => (
+              <div 
+                key={index}
+                className="bg-gray-50 dark:bg-gray-800/50 rounded-lg overflow-hidden shadow-md hover:shadow-xl transition-all duration-300 print:shadow-none print:border print:border-gray-200"
+              >
+                <div className="relative h-48 mb-6 print:h-40 print:mb-4">
+                  {project.image ? (
+                    <Image
+                      src={project.image}
+                      alt={project.name}
+                      fill
+                      className="object-cover"
+                      sizes="(max-width: 768px) 100vw, 50vw"
+                      quality={40}
+                      loading={index < 2 ? "eager" : "lazy"}
+                      priority={index < 2}
+                    />
+                  ) : (
+                    <DefaultProjectImage />
+                  )}
+                </div>
+                <div className="px-6 pb-6 print:px-4 print:pb-4">
+                  <h4 className="text-gray-900 dark:text-white font-bold text-xl mb-2 print:text-base">
+                    {project.name}
+                  </h4>
+                  <p className="text-gray-600 dark:text-gray-300 text-sm">
+                    {project.description}
+                  </p>
+                </div>
               </div>
-              <div className="p-6">
-                <h4 className="text-gray-900 dark:text-white font-bold text-xl mb-2">
-                  {project.name}
-                </h4>
-                <p className="text-gray-600 dark:text-gray-300 text-sm">
-                  {project.description}
-                </p>
-              </div>
-            </div>
-          ))}
+            ))}
+          </div>
         </div>
-      </div>
 
-      {/* Self-Funded Projects Section */}
-      <div>
-        <h3 className="text-2xl font-bold text-gray-900 dark:text-white mb-6">
-          Self-Funded Projects
-        </h3>
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-          {selfFundedProjects.map((project, index) => (
-            <div 
-              key={index}
-              className="bg-gray-50 dark:bg-gray-800/50 rounded-lg overflow-hidden shadow-md hover:shadow-xl transition-all duration-300"
-            >
-              <div className="relative aspect-video">
-                {project.image ? (
-                  <Image
-                    src={project.image}
-                    alt={project.name}
-                    fill
-                    className="object-cover"
-                    sizes="(max-width: 768px) 100vw, 50vw"
-                    quality={85}
-                    onError={() => {/* Handle error silently */}}
-                  />
-                ) : (
-                  <DefaultProjectImage />
-                )}
+        {/* Technology Exploration & Innovation Lab Section */}
+        <div className="print:break-before-page">
+          <h3 className="text-2xl font-bold text-gray-900 dark:text-white mb-6">
+            Technology Exploration & Innovation Lab
+          </h3>
+          <p className="text-gray-700 dark:text-gray-300 mb-8 max-w-3xl">
+            Welcome to my personal innovation space where I actively explore emerging technologies through hands-on experimentation. 
+            This lab serves as a testbed for evaluating cutting-edge tools, frameworks, and AI capabilities, 
+            transforming theoretical concepts into practical applications. Each project represents a focused investigation 
+            into specific technologies, helping me stay at the forefront of technological advancement while developing 
+            real-world solutions.
+          </p>
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+            {selfFundedProjects.map((project, index) => (
+              <div 
+                key={index}
+                className="bg-gray-50 dark:bg-gray-800/50 rounded-lg overflow-hidden shadow-md hover:shadow-xl transition-all duration-300 print:shadow-none print:border print:border-gray-200"
+              >
+                <div className="relative h-48 mb-6 print:h-40 print:mb-4">
+                  {project.image ? (
+                    <Image
+                      src={project.image}
+                      alt={project.name}
+                      fill
+                      className="object-cover"
+                      sizes="(max-width: 768px) 100vw, 50vw"
+                      quality={40}
+                      loading={index < 2 ? "eager" : "lazy"}
+                      priority={index < 2}
+                    />
+                  ) : (
+                    <DefaultProjectImage />
+                  )}
+                </div>
+                <div className="px-6 pb-6 print:px-4 print:pb-4">
+                  <h4 className="text-gray-900 dark:text-white font-bold text-xl mb-2 print:text-base">
+                    {project.name}
+                  </h4>
+                  <p className="text-gray-600 dark:text-gray-300 text-sm">
+                    {project.description}
+                  </p>
+                </div>
               </div>
-              <div className="p-6">
-                <h4 className="text-gray-900 dark:text-white font-bold text-xl mb-2">
-                  {project.name}
-                </h4>
-                <p className="text-gray-600 dark:text-gray-300 text-sm">
-                  {project.description}
-                </p>
-              </div>
-            </div>
-          ))}
+            ))}
+          </div>
         </div>
       </div>
     </section>

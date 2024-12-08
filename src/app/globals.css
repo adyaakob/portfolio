@@ -2,6 +2,15 @@
 @tailwind components;
 @tailwind utilities;
 
+/* Screen-only and print-only classes */
+.screen-only {
+  display: block;
+}
+
+.print-only {
+  display: none;
+}
+
 /* Leaflet map styles */
 .leaflet-container {
   width: 100%;
@@ -25,698 +34,517 @@
 
 @media print {
   @page {
-    size: A4 portrait;
-    margin: 15mm 20mm;
-  }
-  
-  html, body {
-    width: 100%;
-    height: 100%;
-    margin: 0;
-    padding: 0;
-  }
-  
-  body {
-    -webkit-print-color-adjust: exact !important;
-    print-color-adjust: exact !important;
-    color-adjust: exact !important;
+    size: A4;
+    margin: 20mm;
   }
 
-  /* Force page breaks before major sections except grouped sections */
-  #skills,
-  #experience,
-  #projects-in-motion,
-  #projects,
-  #tools,
-  #references {
-    break-before: page !important;
-    page-break-before: always !important;
-    padding-top: 0 !important;
-    margin-top: 0 !important;
-  }
-
-  /* Keep Education and Certifications together */
-  #education {
-    break-before: page !important;
-    page-break-before: always !important;
-    padding-top: 1rem !important;
-    margin-top: 0 !important;
-    padding-bottom: 1rem !important;
-    margin-bottom: 0 !important;
-  }
-
-  #certifications {
-    break-before: avoid !important;
-    page-break-before: avoid !important;
-    break-inside: avoid !important;
-    page-break-inside: avoid !important;
-    padding-top: 0 !important;
-    margin-top: 0 !important;
-  }
-
-  /* Keep Courses on its own page */
-  #courses {
-    break-before: page !important;
-    page-break-before: always !important;
-    padding-top: 1rem !important;
-    margin-top: 0 !important;
-  }
-
-  /* Adjust spacing between sections */
-  #education + #certifications {
-    margin-top: 1rem !important;
-  }
-
-  /* Section-specific print styles */
-  #education .space-y-8,
-  #certifications .space-y-8 {
-    margin-top: 1rem !important;
-  }
-
-  #education .p-6,
-  #certifications .p-6 {
-    padding: 1rem !important;
-  }
-
-  #education .gap-4,
-  #certifications .gap-4 {
-    gap: 0.75rem !important;
-  }
-
-  /* Image sizes in print */
-  #education .w-12 {
-    width: 2rem !important;
-    height: 2rem !important;
-  }
-
-  #certifications .aspect-\[16\/9\] {
-    aspect-ratio: 16/9 !important;
-    max-height: 100px !important;
-  }
-
-  /* Remove negative margins */
-  #education.pt-20,
-  #certifications.pt-20,
-  #courses.pt-20 {
-    padding-top: 1rem !important;
-  }
-
-  #education.-mt-20,
-  #certifications.-mt-20,
-  #courses.-mt-20 {
-    margin-top: 0 !important;
-  }
-
-  /* Keep References and Contact together */
-  #references {
-    break-before: page !important;
-    page-break-before: always !important;
-    padding-top: 0 !important;
-    margin-top: 0 !important;
-    padding-bottom: 1rem !important;
-    margin-bottom: 0 !important;
-  }
-
-  #contact {
-    break-before: avoid !important;
-    page-break-before: avoid !important;
-    break-inside: avoid !important;
-    page-break-inside: avoid !important;
-    padding-top: 1rem !important;
-    margin-top: 0 !important;
-  }
-
-  /* Make sections more compact for print */
-  #references {
-    padding: 1rem 0 !important;
-  }
-
-  #contact {
-    padding: 1rem 0 !important;
-  }
-
-  /* Reduce spacing between sections */
-  .space-y-16 {
-    margin-top: 0 !important;
-  }
-
-  /* Make References grid more compact */
-  #references .grid {
-    gap: 1rem !important;
-  }
-
-  #references .grid > div {
-    padding: 1rem !important;
-  }
-
-  /* Make contact info more compact */
-  #contact .container {
-    padding: 0 !important;
-  }
-
-  #contact h2 {
-    margin-bottom: 1rem !important;
-  }
-
-  .print-contact-info {
-    margin-bottom: 1rem !important;
-  }
-
-  /* Hide unnecessary elements in print */
-  .print:hidden {
-    display: none !important;
-  }
-
-  /* Container width adjustments */
-  .max-w-6xl,
-  .container,
-  .max-w-5xl,
-  .max-w-4xl,
-  .max-w-3xl {
-    max-width: 180mm !important;
-    margin-left: auto !important;
-    margin-right: auto !important;
-    padding-left: 0 !important;
-    padding-right: 0 !important;
-  }
-
-  /* Add padding to main content */
-  main > div {
-    padding-left: 3mm !important;
-    padding-right: 3mm !important;
-  }
-
-  /* Reduce spacing between items within sections */
-  .p-6 {
-    padding: 1.25rem !important;
-  }
-
-  .gap-6 {
-    gap: 1rem !important;
-  }
-
-  /* Hide navigation and buttons */
-  nav, 
-  button, 
-  .print-hidden {
-    display: none !important;
-  }
-
-  /* Section spacing and breaks */
-  section {
-    break-inside: avoid !important;
-    page-break-inside: avoid !important;
-    margin-bottom: 2rem !important;
-    position: relative !important;
-  }
-
-  /* Ensure section titles stay with content */
-  section h2,
-  .section-title {
-    break-after: avoid !important;
-    page-break-after: avoid !important;
-    margin-bottom: 1.5rem !important;
-  }
-
-  /* Keep card contents together */
-  .rounded-lg {
-    break-inside: avoid !important;
-    page-break-inside: avoid !important;
-  }
-
-  /* Ensure images print properly */
-  img {
-    break-inside: avoid !important;
-    page-break-inside: avoid !important;
-  }
-
-  /* Reset all dark mode colors to light theme */
-  .dark\:bg-gray-800, 
-  .dark\:bg-gray-900,
-  .dark\:bg-gray-800\/50 {
-    background-color: white !important;
-  }
-
-  .dark\:text-white,
-  .dark\:text-gray-100,
-  .dark\:text-gray-200,
-  .dark\:text-gray-300,
-  .dark\:text-\[\#94A3B8\],
-  .dark\:text-\[\#64748B\] {
-    color: #000 !important;
-  }
-
-  /* Font sizes for print */
-  h1 {
-    font-size: 20pt !important;
-    color: #000 !important;
-    margin-bottom: 1rem !important;
-    font-weight: bold !important;
-  }
-  
-  h2 {
-    font-size: 16pt !important;
-    color: #000 !important;
-    margin-bottom: 1rem !important;
-    font-weight: bold !important;
-  }
-  
-  h3 {
-    font-size: 12pt !important;
-    color: #000 !important;
-    margin-bottom: 0.5rem !important;
-    font-weight: 600 !important;
-  }
-
-  p, span, div {
-    font-size: 10pt !important;
-    color: #1a1a1a !important;
-    line-height: 1.5 !important;
-  }
-
-  /* Special text sizes */
-  .text-lg {
-    font-size: 11pt !important;
-  }
-
-  .text-sm {
-    font-size: 9pt !important;
-  }
-
-  .text-xs {
-    font-size: 8pt !important;
-  }
-
-  /* Category labels and metadata */
-  .category-label,
-  .date-label,
-  .metadata {
-    font-size: 9pt !important;
-    color: #4b5563 !important;
-  }
-
-  /* Hero section specific */
-  #hero {
-    padding: 1.5rem 0 !important;
-  }
-
-  #hero h1 {
-    color: black !important;
-    font-size: 24pt !important;
-    margin-bottom: 0.5rem !important;
-  }
-
-  #hero h2 {
-    font-size: 16pt !important;
-    margin-bottom: 0.75rem !important;
-  }
-
-  /* Contact info layout */
-  #hero .flex.flex-wrap {
-    display: flex !important;
-    justify-content: center !important;
-    gap: 1rem !important;
-    margin-bottom: 1rem !important;
-    font-size: 10pt !important;
-  }
-
-  #hero .whitespace-nowrap {
-    white-space: nowrap !important;
-  }
-
-  #hero .gap-2 {
-    gap: 0.375rem !important;
-  }
-
-  /* Icon colors in print */
-  #hero .text-purple-600 {
-    color: #4B5563 !important;
-  }
-
-  /* Ensure text stays black in print */
-  #hero .text-gray-600,
-  #hero a {
-    color: #1a1a1a !important;
-  }
-
-  /* Remove hover effects in print */
-  #hero a:hover {
-    color: #1a1a1a !important;
-  }
-
-  /* Force light theme for print */
+  /* Force light theme for printing */
   :root {
     color-scheme: light !important;
   }
 
-  body, main {
+  /* Basic print styles */
+  body {
     background: white !important;
-    color: #000 !important;
+    color: black !important;
+    -webkit-print-color-adjust: exact !important;
+    print-color-adjust: exact !important;
   }
 
-  /* Card styles for print */
-  .bg-gray-50,
-  .dark\:bg-gray-800\/50 {
-    background-color: white !important;
+  /* Hero section print styles */
+  #hero {
+    padding: 0 !important;
+  }
+
+  #hero h1 {
+    font-size: 24px !important;
+    margin-bottom: 8px !important;
+  }
+
+  #hero p {
+    font-size: 12px !important;
+    margin-bottom: 16px !important;
+  }
+
+  #hero .profile-image {
+    width: 128px !important;
+    height: 128px !important;
+  }
+
+  /* Container width for all sections */
+  .container {
+    max-width: none !important;
+    padding-left: 0 !important;
+    padding-right: 0 !important;
+  }
+
+  /* Projects and Projects in Motion grid layout */
+  #projects .grid,
+  #projects-in-motion .grid {
+    display: grid !important;
+    grid-template-columns: repeat(2, 1fr) !important;
+    gap: 1.5rem !important;
+    width: 100% !important;
+  }
+
+  #projects .grid > div,
+  #projects-in-motion .grid > div {
+    margin: 0 !important;
+    page-break-inside: avoid !important;
+    background: white !important;
     border: 1px solid #e5e7eb !important;
   }
 
-  /* Text colors for print */
-  .text-gray-700 {
-    color: #374151 !important;
+  /* Force all images to be visible */
+  img {
+    display: block !important;
+    visibility: visible !important;
+    break-inside: avoid !important;
+    print-color-adjust: exact !important;
   }
 
+  /* Hide screen-only elements */
+  .screen-only,
+  .print-hide,
+  button,
+  nav {
+    display: none !important;
+  }
+
+  /* Show print-only elements */
+  .print-only {
+    display: block !important;
+  }
+
+  /* Text colors for print */
+  h1, h2, h3, h4, h5, h6, p, span, div {
+    color: black !important;
+  }
+
+  .dark * {
+    background-color: white !important;
+    color: black !important;
+  }
+
+  /* Remove shadows and effects */
+  * {
+    box-shadow: none !important;
+    text-shadow: none !important;
+  }
+
+  /* Global Business Development Portfolio - 4 columns for flags/countries */
+  #world-map .grid {
+    grid-template-columns: repeat(4, minmax(0, 1fr)) !important;
+  }
+
+  .global-business .grid-cols-2 {
+    grid-template-columns: repeat(4, minmax(0, 1fr)) !important;
+  }
+
+  /* Education card shadows */
+  .education-item {
+    box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1) !important;
+    print-color-adjust: exact;
+    -webkit-print-color-adjust: exact;
+  }
+
+  /* Project type text colors and alignment */
+  [data-project-type="Technical Consultation"],
+  [data-project-type="Self-Funded Projects"] {
+    color: #22c55e !important; /* text-green-500 */
+    text-align: center !important;
+    print-color-adjust: exact;
+    -webkit-print-color-adjust: exact;
+  }
+
+  /* Project section titles color and alignment - for both web and print */
+  #projects-in-motion h3.text-2xl {
+    color: #22c55e !important; /* text-green-500 */
+    text-align: center !important;
+    print-color-adjust: exact;
+    -webkit-print-color-adjust: exact;
+  }
+
+  /* Hide non-printable elements */
+  .no-print {
+    display: none !important;
+  }
+
+  /* Reset background colors and shadows for better printing */
+  * {
+    background-color: white !important;
+    color: black !important;
+    box-shadow: none !important;
+    text-shadow: none !important;
+  }
+
+  /* Ensure the content fits the page */
+  body {
+    width: 100%;
+    margin: 0;
+    padding: 0;
+  }
+
+  /* Adjust layout for print */
+  #content-to-capture {
+    padding: 0 !important;
+    margin: 0 !important;
+    width: 100% !important;
+    max-width: none !important;
+  }
+
+  /* Adjust spacing */
+  section {
+    page-break-inside: avoid;
+    margin: 0;
+    padding: 1rem 0;
+  }
+
+  /* Ensure images print properly */
+  img {
+    max-width: 100% !important;
+    page-break-inside: avoid;
+  }
+
+  /* Adjust text for better print readability */
+  p, li {
+    font-size: 12pt;
+    line-height: 1.4;
+  }
+
+  h1 {
+    font-size: 24pt;
+    margin-bottom: 1rem;
+  }
+
+  h2 {
+    font-size: 20pt;
+    margin-bottom: 0.8rem;
+  }
+
+  h3 {
+    font-size: 16pt;
+    margin-bottom: 0.6rem;
+  }
+
+  /* Ensure links are readable */
+  a {
+    text-decoration: none !important;
+  }
+
+  /* Add page breaks before major sections */
+  #about,
+  #experience,
+  #projects,
+  #contact {
+    page-break-before: always;
+  }
+
+  /* Ensure text remains selectable */
+  * {
+    -webkit-print-color-adjust: exact !important;
+    print-color-adjust: exact !important;
+    color-adjust: exact !important;
+    -webkit-user-select: text !important;
+    -moz-user-select: text !important;
+    -ms-user-select: text !important;
+    user-select: text !important;
+    text-rendering: geometricPrecision !important;
+  }
+
+  /* Prevent text from being converted to graphics */
+  body {
+    -webkit-font-smoothing: antialiased !important;
+    -moz-osx-font-smoothing: grayscale !important;
+    text-rendering: optimizeLegibility !important;
+    print-color-adjust: exact;
+  }
+
+  /* Ensure text elements remain as text */
+  p, h1, h2, h3, h4, h5, h6, span, div, li {
+    font-family: ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif !important;
+    transform: none !important;
+    -webkit-transform: none !important;
+    -webkit-font-smoothing: subpixel-antialiased !important;
+    filter: none !important;
+    backdrop-filter: none !important;
+    text-shadow: none !important;
+  }
+
+  /* Remove any effects that might convert text to graphics */
+  .bg-gradient-to-r,
+  .bg-gradient-to-br,
+  .bg-clip-text,
+  .text-transparent {
+    background: none !important;
+    background-image: none !important;
+    background-clip: unset !important;
+    -webkit-background-clip: unset !important;
+    color: #7c3aed !important;
+  }
+
+  /* Ensure all text has proper contrast */
   .text-gray-600 {
     color: #4b5563 !important;
   }
 
-  .text-gray-500 {
-    color: #6b7280 !important;
+  .text-gray-700 {
+    color: #374151 !important;
   }
 
-  /* Fix Next.js Image printing */
-  img,
-  span img,
-  Image,
-  .next-image-wrapper img {
-    display: block !important;
-    opacity: 1 !important;
-    visibility: visible !important;
-    break-inside: avoid !important;
-    print-color-adjust: exact !important;
-    -webkit-print-color-adjust: exact !important;
-    color-adjust: exact !important;
-    position: relative !important;
-    z-index: 1 !important;
+  .text-gray-800 {
+    color: #1f2937 !important;
   }
 
-  /* Fix Next.js Image container */
-  span[style*="box-sizing: border-box"],
-  .next-image-wrapper {
-    display: block !important;
-    opacity: 1 !important;
-    visibility: visible !important;
-    position: relative !important;
-    z-index: 1 !important;
+  .dark\:text-white,
+  .dark\:text-gray-300,
+  .dark\:text-gray-400 {
+    color: #374151 !important;
   }
 
-  /* Ensure image containers maintain aspect ratio */
-  .relative.aspect-\[16\/9\] {
-    position: relative !important;
-    padding-top: 56.25% !important;
-    overflow: hidden !important;
-    margin-bottom: 1rem !important;
+  /* Heading styles */
+  h1, h2 {
+    color: #7c3aed !important; /* purple-600 */
   }
 
-  .relative.aspect-\[16\/9\] > img,
-  .relative.aspect-\[16\/9\] > span {
-    position: absolute !important;
-    top: 0 !important;
-    left: 0 !important;
-    width: 100% !important;
-    height: 100% !important;
-    object-fit: cover !important;
+  h3 {
+    color: #1f2937 !important; /* gray-800 */
   }
 
-  /* Force background colors and images to print */
+  /* Text styles */
+  p, li, span {
+    color: #374151 !important; /* gray-700 */
+  }
+
+  /* Remove any background gradients or effects that might convert text to graphics */
+  .bg-gradient-to-r,
+  .bg-clip-text,
+  .text-transparent {
+    background: none !important;
+    background-clip: unset !important;
+    -webkit-background-clip: unset !important;
+    color: inherit !important;
+  }
+
+  /* Ensure dark mode text is visible */
+  .dark\:text-white,
+  .dark\:text-gray-300,
+  .dark\:text-gray-400 {
+    color: #374151 !important;
+  }
+
+  /* Make text selectable/editable */
   * {
-    -webkit-print-color-adjust: exact !important;
-    color-adjust: exact !important;
-    print-color-adjust: exact !important;
+    -webkit-user-select: text !important;
+    -moz-user-select: text !important;
+    -ms-user-select: text !important;
+    user-select: text !important;
   }
 
-  /* Certification specific print styles */
-  #certifications .grid > div {
-    break-inside: avoid !important;
-    page-break-inside: avoid !important;
-    background-color: white !important;
-    border: 1px solid #e5e7eb !important;
+  /* Remove shadows and effects */
+  * {
+    box-shadow: none !important;
+    text-shadow: none !important;
   }
 
-  /* About section specific styling */
-  #about {
-    break-inside: avoid !important;
-    page-break-inside: avoid !important;
-    break-before: auto !important;
-    page-break-before: auto !important;
-    padding-top: 2rem !important;
+  /* Heading styles */
+  h1 {
+    color: #7c3aed !important; /* purple-600 */
+    print-color-adjust: exact;
+    -webkit-print-color-adjust: exact;
   }
 
-  #about .text-lg {
-    margin-bottom: 1.5rem !important;
-    font-size: 11pt !important;
-    line-height: 1.4 !important;
+  h2 {
+    color: #7c3aed !important; /* purple-600 */
+    print-color-adjust: exact;
+    -webkit-print-color-adjust: exact;
   }
 
-  #about .grid {
-    break-before: avoid !important;
-    page-break-before: avoid !important;
-    margin-top: 1rem !important;
-    gap: 1rem !important;
+  h3 {
+    color: #1f2937 !important; /* gray-800 */
+    print-color-adjust: exact;
+    -webkit-print-color-adjust: exact;
   }
 
-  /* Keep intro text with grid */
-  #about p + .grid {
-    break-before: avoid !important;
-    page-break-before: avoid !important;
+  /* Text styles */
+  p, li {
+    color: #374151 !important; /* gray-700 */
+    print-color-adjust: exact;
+    -webkit-print-color-adjust: exact;
   }
 
-  /* Make grid items more compact in About section */
-  #about .grid > div {
-    padding: 1rem !important;
+  /* Make sure all text is visible and editable */
+  .dark\:text-white,
+  .dark\:text-gray-300,
+  .dark\:text-gray-400 {
+    color: #374151 !important; /* gray-700 */
+    print-color-adjust: exact;
+    -webkit-print-color-adjust: exact;
+  }
+}
+
+@media print, .for-pdf {
+  /* Force light theme for printing */
+  :root {
+    color-scheme: light !important;
   }
 
-  /* Grid layout fixes for print */
-  .grid {
-    display: grid !important;
-    grid-template-columns: repeat(2, 1fr) !important;
-    gap: 1rem !important;
-    width: 100% !important;
-    page-break-inside: avoid !important;
-    break-inside: avoid !important;
-  }
-
-  /* Ensure grid items stay together */
-  .grid > div {
-    page-break-inside: avoid !important;
-    break-inside: avoid !important;
-    display: block !important;
-  }
-
-  /* Specific grid adjustments for different sections */
-  #about .grid,
-  #skills .grid,
-  #projects .grid,
-  #projects-in-motion .grid,
-  #tools .grid,
-  #courses .grid,
-  #references .grid {
-    grid-template-columns: repeat(2, 1fr) !important;
-    gap: 0.75rem !important;
-  }
-
-  /* Adjust grid item padding */
-  .grid > div {
-    padding: 0.75rem !important;
-    margin: 0 !important;
-  }
-
-  /* Ensure proper spacing between grid sections */
-  .grid + .grid {
-    margin-top: 1rem !important;
-  }
-
-  /* Prevent grid container from breaking */
-  .grid-container {
-    page-break-inside: avoid !important;
-    break-inside: avoid !important;
-  }
-
-  /* Force grid display for print */
-  @media print {
-    .md\:grid-cols-2 {
-      grid-template-columns: repeat(2, 1fr) !important;
-    }
-    .grid-cols-1 {
-      grid-template-columns: repeat(2, 1fr) !important;
-    }
-  }
-
-  /* Adjust container width for print */
-  .container,
-  .max-w-6xl,
-  .max-w-4xl {
-    width: 100% !important;
-    max-width: none !important;
-    padding-left: 0 !important;
-    padding-right: 0 !important;
-    margin-left: auto !important;
-    margin-right: auto !important;
-  }
-
-  /* Ensure grid text stays within bounds */
-  .grid p,
-  .grid h3 {
+  /* Base text settings */
+  body {
+    font-size: 10px !important;
+    line-height: 1.2 !important;
+    background: white !important;
+    color: black !important;
+    width: 210mm !important;
     margin: 0 !important;
     padding: 0 !important;
-    overflow: hidden !important;
-    text-overflow: ellipsis !important;
   }
 
-  .grid h3 {
-    margin-bottom: 0.25rem !important;
-  }
-
-  .grid p + p {
-    margin-top: 0.25rem !important;
-  }
-
-  /* Specific adjustments for References grid */
-  #references .grid {
+  /* Heading Hierarchy */
+  h1 {
+    font-size: 18px !important;
+    line-height: 1.2 !important;
     margin-bottom: 1rem !important;
   }
 
-  #references .grid > div {
-    background-color: transparent !important;
-    border: 1px solid #e5e7eb !important;
-  }
-
-  /* Timeline print styles */
-  #timeline {
-    padding: 1rem 0 !important;
-    background: none !important;
-  }
-
-  #timeline h2 {
-    font-size: 16pt !important;
+  h2 {
+    font-size: 14px !important;
+    line-height: 1.2 !important;
     margin-bottom: 0.75rem !important;
-    color: black !important;
   }
 
-  /* Timeline items */
-  #timeline .flex.gap-6 {
-    gap: 0.75rem !important;
-  }
-
-  #timeline .pb-6 {
-    padding-bottom: 0.5rem !important;
-  }
-
-  /* Timeline icons and line */
-  #timeline .w-10 {
-    width: 1.5rem !important;
-    height: 1.5rem !important;
-  }
-
-  #timeline .w-4 {
-    width: 0.75rem !important;
-    height: 0.75rem !important;
-  }
-
-  #timeline .w-0\.5 {
-    background-color: #e5e7eb !important;
-  }
-
-  #timeline .left-\[2\.25rem\] {
-    left: 0.75rem !important;
-  }
-
-  /* Timeline content */
-  #timeline .p-4 {
-    padding: 0.5rem !important;
-  }
-
-  #timeline .mb-1 {
-    margin-bottom: 0.125rem !important;
-  }
-
-  /* Timeline text */
-  #timeline .text-lg {
-    font-size: 11pt !important;
-  }
-
-  #timeline .text-sm {
-    font-size: 9pt !important;
-  }
-
-  /* Timeline colors */
-  #timeline .text-purple-600,
-  #timeline .text-purple-400 {
-    color: #4a5568 !important;
-  }
-
-  #timeline .bg-purple-100 {
-    background-color: #f7fafc !important;
-  }
-
-  /* Timeline container */
-  #timeline .rounded-lg {
-    border: 1px solid #e5e7eb !important;
-    box-shadow: none !important;
-  }
-
-  /* Methodology print styles */
-  #methodology {
-    break-before: page !important;
-    page-break-before: always !important;
-    padding: 1rem 0 !important;
-    background: none !important;
-  }
-
-  #methodology h2 {
-    font-size: 18pt !important;
-    margin-bottom: 1.5rem !important;
-    color: black !important;
-  }
-
-  #methodology h3 {
-    font-size: 16pt !important;
-    margin-bottom: 1rem !important;
-  }
-
-  #methodology h4 {
-    font-size: 14pt !important;
-    margin-bottom: 1rem !important;
-  }
-
-  #methodology h5 {
-    font-size: 12pt !important;
-    margin-bottom: 0.25rem !important;
-  }
-
-  #methodology p {
-    font-size: 10pt !important;
-    line-height: 1.4 !important;
+  h3 {
+    font-size: 12px !important;
+    line-height: 1.2 !important;
     margin-bottom: 0.5rem !important;
   }
 
-  /* Methodology image */
-  #methodology .aspect-\[16\/9\] {
-    max-height: 300px !important;
-    margin: 1rem 0 !important;
+  h4 {
+    font-size: 10px !important;
+    line-height: 1.0 !important;
+    margin-bottom: 0.5rem !important;
   }
 
-  /* Methodology bullets */
-  #methodology .space-y-4 {
-    margin-top: 1rem !important;
+  /* Body text */
+  p {
+    font-size: 10px !important;
+    line-height: 1.4 !important;
+    margin-bottom: 0.4rem !important;
   }
 
-  #methodology .gap-4 {
-    gap: 0.75rem !important;
+  /* List items */
+  li {
+    font-size: 10px !important;
+    line-height: 1.1 !important;
+    margin-bottom: 0.1rem !important;
   }
 
-  #methodology .w-2 {
-    width: 0.375rem !important;
-    height: 0.375rem !important;
+  /* Skills section text */
+  #skills li {
+    line-height: 1.0 !important;
+    margin-bottom: 0.05rem !important;
   }
 
-  /* Container styles */
-  #methodology .p-8 {
-    padding: 1.5rem !important;
+  /* Maintain spacing */
+  section {
+    padding: 8mm 0 !important;
+    margin: 0 !important;
+    background: transparent !important;
+    page-break-inside: avoid !important;
+    break-inside: avoid !important;
   }
 
-  #methodology .rounded-lg {
-    border: 1px solid #e5e7eb !important;
+  /* Force page breaks */
+  #about {
+    page-break-before: always !important;
+    break-before: page !important;
+    padding-top: 15mm !important;
+  }
+
+  /* Keep sections together */
+  #skills {
+    page-break-before: avoid !important;
+    break-before: avoid !important;
+    page-break-inside: avoid !important;
+    break-inside: avoid !important;
+  }
+
+  /* Adjust margins and spacing */
+  .container {
+    width: 190mm !important; /* A4 width - margins */
+    margin: 0 auto !important;
+    padding: 0 !important;
+  }
+
+  /* Grid adjustments */
+  .grid {
+    display: grid !important;
+    grid-template-columns: repeat(2, 1fr) !important;
+    gap: 4mm !important;
+  }
+
+  /* Reduce spacing in skills grid */
+  .gap-6 {
+    gap: 4mm !important;
+  }
+
+  .p-6 {
+    padding: 3mm !important;
+  }
+
+  .space-y-2 > * + * {
+    margin-top: 1mm !important;
+  }
+
+  /* Hide unnecessary elements */
+  button, 
+  .print-hide,
+  [aria-label="Save as PDF"],
+  nav,
+  footer {
+    display: none !important;
+  }
+
+  /* Remove backgrounds and shadows */
+  .bg-white,
+  .bg-gray-50,
+  .bg-gray-100,
+  .bg-gray-200,
+  .dark\:bg-gray-800,
+  .dark\:bg-gray-900 {
+    background-color: transparent !important;
+  }
+
+  .shadow,
+  .shadow-sm,
+  .shadow-md,
+  .shadow-lg,
+  .shadow-xl {
     box-shadow: none !important;
   }
+
+  /* Force colors for better contrast */
+  * {
+    color: black !important;
+    border-color: #ddd !important;
+    background-color: transparent !important;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    color: #111 !important;
+  }
+
+  /* Ensure images are properly handled */
+  img {
+    max-width: 100% !important;
+    height: auto !important;
+  }
+}
+
+/* Project section titles color and alignment - for both web and print */
+#projects-in-motion h3.text-2xl {
+  color: #22c55e !important; /* text-green-500 */
+  text-align: center !important;
+  print-color-adjust: exact;
+  -webkit-print-color-adjust: exact;
 }

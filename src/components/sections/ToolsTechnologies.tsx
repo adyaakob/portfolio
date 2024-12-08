@@ -106,7 +106,7 @@ export default function ToolsTechnologies() {
                       src={`${basePath}${tool.logo}`}
                       alt={`${tool.name} logo`}
                       fill
-                      className="object-contain"
+                      className="object-contain tool-logo"
                       sizes="64px"
                       priority={categoryIndex === 0 && toolIndex < 3}
                     />

@@ -1,7 +1,7 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   output: 'export',  // Enable static exports
-  basePath: '/portfolio', // The base path for your GitHub Pages site
+  basePath: process.env.NODE_ENV === 'production' ? '/portfolio' : '', // Dynamic base path
   images: {
     unoptimized: true, // Required for static export
     domains: ['flagcdn.com'],

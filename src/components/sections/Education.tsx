@@ -26,7 +26,10 @@ export default function Education() {
       
       <div className="max-w-3xl mx-auto space-y-8">
         {educationData.map((edu, index) => (
-          <div key={index} className="flex items-start gap-4 p-6 rounded-lg bg-gray-50 dark:bg-gray-800/50">
+          <div 
+            key={index} 
+            className="education-item bg-gray-50 dark:bg-gray-800/50 rounded-lg p-6 shadow-md hover:shadow-xl transition-all duration-300"
+          >
             <div className="w-12 h-12 relative flex-shrink-0">
               <Image
                 src={`${basePath}${edu.logo}`}

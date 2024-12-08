@@ -28,23 +28,26 @@ export default function Certifications() {
         {certificationsData.map((cert, index) => (
           <div 
             key={index} 
-            className="bg-gray-50 dark:bg-gray-800/50 rounded-lg overflow-hidden shadow-md hover:shadow-xl transition-all duration-300"
+            className="bg-gray-50 dark:bg-gray-800/50 rounded-lg overflow-hidden shadow-md hover:shadow-xl transition-all duration-300 print:shadow-none print:border print:border-gray-200"
           >
-            <div className="relative aspect-[16/9] w-full">
+            <div className="relative h-48">
               <Image
                 src={cert.image}
                 alt={cert.title}
                 fill
                 className="object-cover"
                 sizes="(max-width: 768px) 100vw, 50vw"
+                priority={index < 2}
+                loading={index < 2 ? "eager" : "lazy"}
+                quality={40}
               />
             </div>
             
-            <div className="p-6">
-              <h3 className="text-gray-900 dark:text-white font-bold text-xl">
+            <div className="p-6 print:p-4">
+              <h3 className="text-gray-900 dark:text-white font-bold text-xl print:text-base">
                 {cert.title}
               </h3>
-              <p className="text-gray-700 dark:text-[#94A3B8] mt-2">{cert.issuer}</p>
+              <p className="text-gray-700 dark:text-[#94A3B8] mt-2 print:text-sm">{cert.issuer}</p>
               <p className="text-gray-500 dark:text-[#64748B] text-sm mt-1">{cert.issueDate}</p>
             </div>
           </div>

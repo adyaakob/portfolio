@@ -22,6 +22,7 @@ import {
 } from '@/components/sections'
 
 const WorldMap = dynamic(() => import('@/components/sections/WorldMap'), { ssr: false })
+const SkillsGraph = dynamic(() => import('@/components/sections/SkillsGraph'), { ssr: false })
 
 export default function ClientSideApp() {
   const { theme } = useTheme()
@@ -30,9 +31,10 @@ export default function ClientSideApp() {
     <main className="min-h-screen bg-white dark:bg-gradient-to-br dark:from-gray-900 dark:via-gray-800 dark:to-gray-900 text-gray-900 dark:text-white print:bg-white print:text-black">
       <Navbar />
       
-      <div className="max-w-[21cm] mx-auto px-4 space-y-4 print:space-y-2 print:max-w-none print:px-0">
+      <div id="content-to-capture" className="max-w-[21cm] mx-auto px-4 space-y-4 print:space-y-2 print:max-w-none print:px-0">
         <Hero />
         <About />
+        <SkillsGraph />
         <Skills />
         <Experience />
         <WorldMap />

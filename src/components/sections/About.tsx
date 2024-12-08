@@ -2,7 +2,7 @@ import Section from '../ui/Section'
 
 export default function About() {
   return (
-    <section className="py-8 print:pt-4 print:pb-2">
+    <section id="about" className="py-8 print:pt-4 print:pb-2">
       <div className="max-w-3xl mx-auto text-center">
         <h2 className="text-3xl font-bold mb-6 text-purple-600 dark:text-purple-400 print:text-xl print:mb-2">
           About Me

@@ -3,75 +3,92 @@
 import Image from 'next/image'
 import { getBasePath } from '@/lib/utils'
 import Link from 'next/link'
-import html2pdf from 'html2pdf.js'
+import { useTheme } from 'next-themes'
 
 export default function Hero() {
   const basePath = getBasePath()
+  const { theme, setTheme } = useTheme()
 
-  const handlePrint = () => {
-    if (typeof window !== 'undefined') {
-      window.print();
+  const handlePrint = async () => {
+    // Scroll through the page to trigger lazy loading
+    const scrollStep = window.innerHeight / 2;
+    const scrollDelay = 100;
+    const originalPosition = window.scrollY;
+
+    // Scroll down
+    for (let i = 0; i <= document.documentElement.scrollHeight; i += scrollStep) {
+      window.scrollTo(0, i);
+      await new Promise(resolve => setTimeout(resolve, scrollDelay));
     }
-  };
+
+    // Scroll back up
+    window.scrollTo(0, originalPosition);
+
+    // Wait a moment for any final loading
+    await new Promise(resolve => setTimeout(resolve, 500));
+
+    // Trigger print
+    window.print();
+  }
 
   return (
-    <section className="py-8">
-      <div className="max-w-3xl mx-auto text-center">
-        <div className="relative w-32 h-32 mx-auto mb-6">
-          <Image
-            src={`${basePath}/images/profile.jpg`}
-            alt="Profile"
-            width={128}
-            height={128}
-            className="rounded-full object-cover"
-            priority
-            quality={85}
-          />
-        </div>
+    <section className="py-12 sm:py-16 print:py-0">
+      <div className="container mx-auto px-4">
+        <div className="flex flex-col-reverse md:flex-row items-center justify-between gap-8">
+          {/* Text Content */}
+          <div className="flex-1 text-center md:text-left">
+            <h1 className="text-4xl sm:text-5xl font-bold mb-6 text-gray-900 dark:text-white print:text-2xl print:mb-2">
+              Ahmad Dahalan Yaakob
+            </h1>
+            <p className="text-xl sm:text-2xl mb-8 text-gray-600 dark:text-gray-300 print:text-base print:mb-4">
+              Experienced R&amp;D and Product Management Professional in Defense Communications
+            </p>
+            
+            <p className="text-gray-700 dark:text-gray-300 leading-relaxed mb-8 text-base print:text-sm">
+              I bring over 25 years of experience in defense, telecommunications, and emerging technologies, 
+              with a strong interest in Artificial Intelligence (AI) as a key driver for my career development, 
+              aiming to bring transformative benefits to various industries. Throughout my career, I&apos;ve 
+              successfully led multidisciplinary teams to create advanced communication solutions for military 
+              and government clients. I am passionate about technology, innovation, and exploring AI&apos;s potential 
+              to benefit not only defense but also other industries, consistently striving to deliver high-quality, 
+              impactful solutions.
+            </p>
 
-        <p className="text-purple-600 dark:text-purple-400 mb-2">I&apos;m</p>
-        
-        <h1 className="text-4xl font-bold mb-2 bg-gradient-to-r from-blue-500 via-purple-500 to-purple-400 bg-clip-text text-transparent">
-          Ahmad Dahalan Yaakob
-        </h1>
-        
-        <h2 className="text-2xl font-bold mb-6 text-gray-700 dark:text-gray-300">
-          Experienced R&D and Product Management Professional in Defense Communications
-        </h2>
-        
-        <p className="text-gray-700 dark:text-gray-300 leading-relaxed mb-8">
-          I bring over 25 years of experience in defense, telecommunications, and emerging technologies, 
-          with a strong interest in Artificial Intelligence (AI) as a key driver for my career development, 
-          aiming to bring transformative benefits to various industries. Throughout my career, I&apos;ve 
-          successfully led multidisciplinary teams to create advanced communication solutions for military 
-          and government clients. I am passionate about technology, innovation, and exploring AI&apos;s potential 
-          to benefit not only defense but also other industries, consistently striving to deliver high-quality, 
-          impactful solutions.
-        </p>
+            <div className="flex items-center justify-center md:justify-start gap-4 text-sm text-gray-600 dark:text-gray-400 mb-8 print:text-xs print:mb-4">
+              <span>51 years old</span>
+              <span className="hidden print:inline">•</span>
+              <span>+60 102369037</span>
+              <span className="hidden print:inline">•</span>
+              <span>adyaakob@gmail.com</span>
+            </div>
 
-        <div className="flex items-center justify-center gap-4 text-sm text-gray-600 dark:text-gray-400 mb-8">
-          <span>51 years old</span>
-          <span>+60 102369037</span>
-          <span>adyaakob@gmail.com</span>
-        </div>
+            <div className="flex flex-wrap gap-4 justify-center md:justify-start print:hidden">
+              <Link
+                href="#contact"
+                className="bg-purple-600 hover:bg-purple-700 text-white px-8 py-3 rounded-lg font-medium transition-colors"
+              >
+                Contact Me
+              </Link>
+              <button
+                onClick={handlePrint}
+                className="bg-gray-200 dark:bg-gray-700 hover:bg-gray-300 dark:hover:bg-gray-600 text-gray-800 dark:text-white px-8 py-3 rounded-lg font-medium transition-colors"
+              >
+                Save as PDF
+              </button>
+            </div>
+          </div>
 
-        <div className="flex justify-center gap-4">
-          <Link href="#experience">
-            <button className="px-6 py-2 bg-purple-600 text-white rounded-full hover:bg-blue-400 transition-colors">
-              View Experience
-            </button>
-          </Link>
-          <Link href="#contact">
-            <button className="px-6 py-2 border border-purple-600 text-purple-600 rounded-full hover:bg-blue-100 dark:hover:bg-blue-400/10 transition-colors">
-              Contact Me
-            </button>
-          </Link>
-          <button 
-            onClick={handlePrint}
-            className="px-6 py-2 border border-purple-600 text-purple-600 rounded-full hover:bg-blue-100 dark:hover:bg-blue-400/10 transition-colors"
-          >
-            Save as PDF
-          </button>
+          {/* Image */}
+          <div className="w-48 h-48 md:w-64 md:h-64 relative">
+            <Image
+              src={`${basePath}/images/profile.jpg`}
+              alt="Ahmad Dahalan Yaakob"
+              width={256}
+              height={256}
+              className="rounded-full object-cover shadow-lg"
+              priority
+            />
+          </div>
         </div>
       </div>
     </section>
