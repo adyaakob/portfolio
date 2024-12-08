@@ -2,8 +2,7 @@ name: Deploy to GitHub Pages
 
 on:
   push:
-    branches: [ main ]
-  workflow_dispatch:
+    branches: [main]
 
 permissions:
   contents: write
@@ -11,7 +10,6 @@ permissions:
 jobs:
   build-and-deploy:
     runs-on: ubuntu-latest
-    
     steps:
       - name: Checkout 🛎️
         uses: actions/checkout@v3
@@ -27,8 +25,6 @@ jobs:
 
       - name: Build
         run: npm run build
-        env:
-          NEXT_PUBLIC_BASE_PATH: /portfolio
 
       - name: Add .nojekyll file
         run: touch ./out/.nojekyll
