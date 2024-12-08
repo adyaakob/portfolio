@@ -1,0 +1,550 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Screen-only and print-only classes */
+.screen-only {
+  display: block;
+}
+
+.print-only {
+  display: none;
+}
+
+/* Leaflet map styles */
+.leaflet-container {
+  width: 100%;
+  height: 100%;
+  z-index: 1;
+}
+
+.leaflet-marker-icon {
+  filter: hue-rotate(140deg) saturate(1.5);
+}
+
+.leaflet-control-container .leaflet-control {
+  background-color: rgba(255, 255, 255, 0.8);
+  color: #000;
+}
+
+.dark .leaflet-control-container .leaflet-control {
+  background-color: rgba(31, 41, 55, 0.8);
+  color: #fff;
+}
+
+@media print {
+  @page {
+    size: A4;
+    margin: 20mm;
+  }
+
+  /* Force light theme for printing */
+  :root {
+    color-scheme: light !important;
+  }
+
+  /* Basic print styles */
+  body {
+    background: white !important;
+    color: black !important;
+    -webkit-print-color-adjust: exact !important;
+    print-color-adjust: exact !important;
+  }
+
+  /* Hero section print styles */
+  #hero {
+    padding: 0 !important;
+  }
+
+  #hero h1 {
+    font-size: 24px !important;
+    margin-bottom: 8px !important;
+  }
+
+  #hero p {
+    font-size: 12px !important;
+    margin-bottom: 16px !important;
+  }
+
+  #hero .profile-image {
+    width: 128px !important;
+    height: 128px !important;
+  }
+
+  /* Container width for all sections */
+  .container {
+    max-width: none !important;
+    padding-left: 0 !important;
+    padding-right: 0 !important;
+  }
+
+  /* Projects and Projects in Motion grid layout */
+  #projects .grid,
+  #projects-in-motion .grid {
+    display: grid !important;
+    grid-template-columns: repeat(2, 1fr) !important;
+    gap: 1.5rem !important;
+    width: 100% !important;
+  }
+
+  #projects .grid > div,
+  #projects-in-motion .grid > div {
+    margin: 0 !important;
+    page-break-inside: avoid !important;
+    background: white !important;
+    border: 1px solid #e5e7eb !important;
+  }
+
+  /* Force all images to be visible */
+  img {
+    display: block !important;
+    visibility: visible !important;
+    break-inside: avoid !important;
+    print-color-adjust: exact !important;
+  }
+
+  /* Hide screen-only elements */
+  .screen-only,
+  .print-hide,
+  button,
+  nav {
+    display: none !important;
+  }
+
+  /* Show print-only elements */
+  .print-only {
+    display: block !important;
+  }
+
+  /* Text colors for print */
+  h1, h2, h3, h4, h5, h6, p, span, div {
+    color: black !important;
+  }
+
+  .dark * {
+    background-color: white !important;
+    color: black !important;
+  }
+
+  /* Remove shadows and effects */
+  * {
+    box-shadow: none !important;
+    text-shadow: none !important;
+  }
+
+  /* Global Business Development Portfolio - 4 columns for flags/countries */
+  #world-map .grid {
+    grid-template-columns: repeat(4, minmax(0, 1fr)) !important;
+  }
+
+  .global-business .grid-cols-2 {
+    grid-template-columns: repeat(4, minmax(0, 1fr)) !important;
+  }
+
+  /* Education card shadows */
+  .education-item {
+    box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1) !important;
+    print-color-adjust: exact;
+    -webkit-print-color-adjust: exact;
+  }
+
+  /* Project type text colors and alignment */
+  [data-project-type="Technical Consultation"],
+  [data-project-type="Self-Funded Projects"] {
+    color: #22c55e !important; /* text-green-500 */
+    text-align: center !important;
+    print-color-adjust: exact;
+    -webkit-print-color-adjust: exact;
+  }
+
+  /* Project section titles color and alignment - for both web and print */
+  #projects-in-motion h3.text-2xl {
+    color: #22c55e !important; /* text-green-500 */
+    text-align: center !important;
+    print-color-adjust: exact;
+    -webkit-print-color-adjust: exact;
+  }
+
+  /* Hide non-printable elements */
+  .no-print {
+    display: none !important;
+  }
+
+  /* Reset background colors and shadows for better printing */
+  * {
+    background-color: white !important;
+    color: black !important;
+    box-shadow: none !important;
+    text-shadow: none !important;
+  }
+
+  /* Ensure the content fits the page */
+  body {
+    width: 100%;
+    margin: 0;
+    padding: 0;
+  }
+
+  /* Adjust layout for print */
+  #content-to-capture {
+    padding: 0 !important;
+    margin: 0 !important;
+    width: 100% !important;
+    max-width: none !important;
+  }
+
+  /* Adjust spacing */
+  section {
+    page-break-inside: avoid;
+    margin: 0;
+    padding: 1rem 0;
+  }
+
+  /* Ensure images print properly */
+  img {
+    max-width: 100% !important;
+    page-break-inside: avoid;
+  }
+
+  /* Adjust text for better print readability */
+  p, li {
+    font-size: 12pt;
+    line-height: 1.4;
+  }
+
+  h1 {
+    font-size: 24pt;
+    margin-bottom: 1rem;
+  }
+
+  h2 {
+    font-size: 20pt;
+    margin-bottom: 0.8rem;
+  }
+
+  h3 {
+    font-size: 16pt;
+    margin-bottom: 0.6rem;
+  }
+
+  /* Ensure links are readable */
+  a {
+    text-decoration: none !important;
+  }
+
+  /* Add page breaks before major sections */
+  #about,
+  #experience,
+  #projects,
+  #contact {
+    page-break-before: always;
+  }
+
+  /* Ensure text remains selectable */
+  * {
+    -webkit-print-color-adjust: exact !important;
+    print-color-adjust: exact !important;
+    color-adjust: exact !important;
+    -webkit-user-select: text !important;
+    -moz-user-select: text !important;
+    -ms-user-select: text !important;
+    user-select: text !important;
+    text-rendering: geometricPrecision !important;
+  }
+
+  /* Prevent text from being converted to graphics */
+  body {
+    -webkit-font-smoothing: antialiased !important;
+    -moz-osx-font-smoothing: grayscale !important;
+    text-rendering: optimizeLegibility !important;
+    print-color-adjust: exact;
+  }
+
+  /* Ensure text elements remain as text */
+  p, h1, h2, h3, h4, h5, h6, span, div, li {
+    font-family: ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif !important;
+    transform: none !important;
+    -webkit-transform: none !important;
+    -webkit-font-smoothing: subpixel-antialiased !important;
+    filter: none !important;
+    backdrop-filter: none !important;
+    text-shadow: none !important;
+  }
+
+  /* Remove any effects that might convert text to graphics */
+  .bg-gradient-to-r,
+  .bg-gradient-to-br,
+  .bg-clip-text,
+  .text-transparent {
+    background: none !important;
+    background-image: none !important;
+    background-clip: unset !important;
+    -webkit-background-clip: unset !important;
+    color: #7c3aed !important;
+  }
+
+  /* Ensure all text has proper contrast */
+  .text-gray-600 {
+    color: #4b5563 !important;
+  }
+
+  .text-gray-700 {
+    color: #374151 !important;
+  }
+
+  .text-gray-800 {
+    color: #1f2937 !important;
+  }
+
+  .dark\:text-white,
+  .dark\:text-gray-300,
+  .dark\:text-gray-400 {
+    color: #374151 !important;
+  }
+
+  /* Heading styles */
+  h1, h2 {
+    color: #7c3aed !important; /* purple-600 */
+  }
+
+  h3 {
+    color: #1f2937 !important; /* gray-800 */
+  }
+
+  /* Text styles */
+  p, li, span {
+    color: #374151 !important; /* gray-700 */
+  }
+
+  /* Remove any background gradients or effects that might convert text to graphics */
+  .bg-gradient-to-r,
+  .bg-clip-text,
+  .text-transparent {
+    background: none !important;
+    background-clip: unset !important;
+    -webkit-background-clip: unset !important;
+    color: inherit !important;
+  }
+
+  /* Ensure dark mode text is visible */
+  .dark\:text-white,
+  .dark\:text-gray-300,
+  .dark\:text-gray-400 {
+    color: #374151 !important;
+  }
+
+  /* Make text selectable/editable */
+  * {
+    -webkit-user-select: text !important;
+    -moz-user-select: text !important;
+    -ms-user-select: text !important;
+    user-select: text !important;
+  }
+
+  /* Remove shadows and effects */
+  * {
+    box-shadow: none !important;
+    text-shadow: none !important;
+  }
+
+  /* Heading styles */
+  h1 {
+    color: #7c3aed !important; /* purple-600 */
+    print-color-adjust: exact;
+    -webkit-print-color-adjust: exact;
+  }
+
+  h2 {
+    color: #7c3aed !important; /* purple-600 */
+    print-color-adjust: exact;
+    -webkit-print-color-adjust: exact;
+  }
+
+  h3 {
+    color: #1f2937 !important; /* gray-800 */
+    print-color-adjust: exact;
+    -webkit-print-color-adjust: exact;
+  }
+
+  /* Text styles */
+  p, li {
+    color: #374151 !important; /* gray-700 */
+    print-color-adjust: exact;
+    -webkit-print-color-adjust: exact;
+  }
+
+  /* Make sure all text is visible and editable */
+  .dark\:text-white,
+  .dark\:text-gray-300,
+  .dark\:text-gray-400 {
+    color: #374151 !important; /* gray-700 */
+    print-color-adjust: exact;
+    -webkit-print-color-adjust: exact;
+  }
+}
+
+@media print, .for-pdf {
+  /* Force light theme for printing */
+  :root {
+    color-scheme: light !important;
+  }
+
+  /* Base text settings */
+  body {
+    font-size: 10px !important;
+    line-height: 1.2 !important;
+    background: white !important;
+    color: black !important;
+    width: 210mm !important;
+    margin: 0 !important;
+    padding: 0 !important;
+  }
+
+  /* Heading Hierarchy */
+  h1 {
+    font-size: 18px !important;
+    line-height: 1.2 !important;
+    margin-bottom: 1rem !important;
+  }
+
+  h2 {
+    font-size: 14px !important;
+    line-height: 1.2 !important;
+    margin-bottom: 0.75rem !important;
+  }
+
+  h3 {
+    font-size: 12px !important;
+    line-height: 1.2 !important;
+    margin-bottom: 0.5rem !important;
+  }
+
+  h4 {
+    font-size: 10px !important;
+    line-height: 1.0 !important;
+    margin-bottom: 0.5rem !important;
+  }
+
+  /* Body text */
+  p {
+    font-size: 10px !important;
+    line-height: 1.4 !important;
+    margin-bottom: 0.4rem !important;
+  }
+
+  /* List items */
+  li {
+    font-size: 10px !important;
+    line-height: 1.1 !important;
+    margin-bottom: 0.1rem !important;
+  }
+
+  /* Skills section text */
+  #skills li {
+    line-height: 1.0 !important;
+    margin-bottom: 0.05rem !important;
+  }
+
+  /* Maintain spacing */
+  section {
+    padding: 8mm 0 !important;
+    margin: 0 !important;
+    background: transparent !important;
+    page-break-inside: avoid !important;
+    break-inside: avoid !important;
+  }
+
+  /* Force page breaks */
+  #about {
+    page-break-before: always !important;
+    break-before: page !important;
+    padding-top: 15mm !important;
+  }
+
+  /* Keep sections together */
+  #skills {
+    page-break-before: avoid !important;
+    break-before: avoid !important;
+    page-break-inside: avoid !important;
+    break-inside: avoid !important;
+  }
+
+  /* Adjust margins and spacing */
+  .container {
+    width: 190mm !important; /* A4 width - margins */
+    margin: 0 auto !important;
+    padding: 0 !important;
+  }
+
+  /* Grid adjustments */
+  .grid {
+    display: grid !important;
+    grid-template-columns: repeat(2, 1fr) !important;
+    gap: 4mm !important;
+  }
+
+  /* Reduce spacing in skills grid */
+  .gap-6 {
+    gap: 4mm !important;
+  }
+
+  .p-6 {
+    padding: 3mm !important;
+  }
+
+  .space-y-2 > * + * {
+    margin-top: 1mm !important;
+  }
+
+  /* Hide unnecessary elements */
+  button, 
+  .print-hide,
+  [aria-label="Save as PDF"],
+  nav,
+  footer {
+    display: none !important;
+  }
+
+  /* Remove backgrounds and shadows */
+  .bg-white,
+  .bg-gray-50,
+  .bg-gray-100,
+  .bg-gray-200,
+  .dark\:bg-gray-800,
+  .dark\:bg-gray-900 {
+    background-color: transparent !important;
+  }
+
+  .shadow,
+  .shadow-sm,
+  .shadow-md,
+  .shadow-lg,
+  .shadow-xl {
+    box-shadow: none !important;
+  }
+
+  /* Force colors for better contrast */
+  * {
+    color: black !important;
+    border-color: #ddd !important;
+    background-color: transparent !important;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    color: #111 !important;
+  }
+
+  /* Ensure images are properly handled */
+  img {
+    max-width: 100% !important;
+    height: auto !important;
+  }
+}
+
+/* Project section titles color and alignment - for both web and print */
+#projects-in-motion h3.text-2xl {
+  color: #22c55e !important; /* text-green-500 */
+  text-align: center !important;
+  print-color-adjust: exact;
+  -webkit-print-color-adjust: exact;
+}
