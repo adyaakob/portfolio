@@ -74,7 +74,7 @@ export default function CV() {
             <div className="flex items-start gap-4 mb-12">
               <div className="w-[80px] h-[80px] rounded-full overflow-hidden">
                 <Image
-                  src="/profile.jpg"
+                  src={`${basePath}/profile.jpg`}
                   alt="Ahmad Dahalan"
                   width={80}
                   height={80}
@@ -145,7 +145,7 @@ export default function CV() {
                   <div className="flex items-center gap-2 mb-2">
                     <div className="w-10 h-10 relative">
                       <Image
-                        src="/images/cv/walkie-talkies.png"
+                        src={`${basePath}/images/cv/walkie-talkies.png`}
                         alt="Walkie Talkie icon"
                         width={40}
                         height={40}
@@ -160,7 +160,7 @@ export default function CV() {
                   <div className="flex items-center gap-2 mb-2">
                     <div className="w-10 h-10 relative">
                       <Image
-                        src="/images/cv/soldier.png"
+                        src={`${basePath}/images/cv/soldier.png`}
                         alt="Soldier icon"
                         width={40}
                         height={40}
@@ -228,7 +228,7 @@ export default function CV() {
                 <li className="flex items-start gap-2">
                   <div className="w-8 h-8 relative flex-shrink-0">
                     <Image
-                      src="/images/education/plymouth-logo.jpg"
+                      src={`${basePath}/images/education/plymouth-logo.jpg`}
                       alt="University of Plymouth"
                       width={32}
                       height={32}
@@ -244,7 +244,7 @@ export default function CV() {
                 <li className="flex items-start gap-2">
                   <div className="w-8 h-8 relative flex-shrink-0">
                     <Image
-                      src="/images/education/utm-logo.jpg"
+                      src={`${basePath}/images/education/utm-logo.jpg`}
                       alt="Universiti Teknologi Malaysia"
                       width={32}
                       height={32}
@@ -397,49 +397,49 @@ export default function CV() {
 
             <div className="grid grid-cols-5 gap-2 mt-2">
               <div className="w-6 h-6 rounded-full overflow-hidden bg-white shadow-sm hover:scale-110 transition-transform">
-                <Image src="/images/tools/vscode.png" alt="Visual Studio Code" width={24} height={24} className="object-cover" />
+                <Image src={`${basePath}/images/tools/vscode.png`} alt="Visual Studio Code" width={24} height={24} className="object-cover" />
               </div>
               <div className="w-6 h-6 rounded-full overflow-hidden bg-white shadow-sm hover:scale-110 transition-transform">
-                <Image src="/images/tools/github.png" alt="GitHub" width={24} height={24} className="object-cover" />
+                <Image src={`${basePath}/images/tools/github.png`} alt="GitHub" width={24} height={24} className="object-cover" />
               </div>
               <div className="w-6 h-6 rounded-full overflow-hidden bg-white shadow-sm hover:scale-110 transition-transform">
-                <Image src="/images/tools/gpt4.png" alt="GPT-4" width={24} height={24} className="object-cover" />
+                <Image src={`${basePath}/images/tools/gpt4.png`} alt="GPT-4" width={24} height={24} className="object-cover" />
               </div>
               <div className="w-6 h-6 rounded-full overflow-hidden bg-white shadow-sm hover:scale-110 transition-transform">
-                <Image src="/images/tools/cursor.png" alt="Cursor" width={24} height={24} className="object-cover" />
+                <Image src={`${basePath}/images/tools/cursor.png`} alt="Cursor" width={24} height={24} className="object-cover" />
               </div>
               <div className="w-6 h-6 rounded-full overflow-hidden bg-white shadow-sm hover:scale-110 transition-transform">
-                <Image src="/images/tools/gamma.png" alt="Gamma" width={24} height={24} className="object-cover" />
+                <Image src={`${basePath}/images/tools/gamma.png`} alt="Gamma" width={24} height={24} className="object-cover" />
               </div>
               <div className="w-6 h-6 rounded-full overflow-hidden bg-white shadow-sm hover:scale-110 transition-transform">
-                <Image src="/images/tools/github-copilot.png" alt="GitHub Copilot" width={24} height={24} className="object-cover" />
+                <Image src={`${basePath}/images/tools/github-copilot.png`} alt="GitHub Copilot" width={24} height={24} className="object-cover" />
               </div>
               <div className="w-6 h-6 rounded-full overflow-hidden bg-white shadow-sm hover:scale-110 transition-transform">
-                <Image src="/images/tools/chatgpt.png" alt="ChatGPT" width={24} height={24} className="object-cover" />
+                <Image src={`${basePath}/images/tools/chatgpt.png`} alt="ChatGPT" width={24} height={24} className="object-cover" />
               </div>
               <div className="w-6 h-6 rounded-full overflow-hidden bg-white shadow-sm hover:scale-110 transition-transform">
-                <Image src="/images/tools/copilot.png" alt="Microsoft Copilot" width={24} height={24} className="object-cover" />
+                <Image src={`${basePath}/images/tools/copilot.png`} alt="Microsoft Copilot" width={24} height={24} className="object-cover" />
               </div>
               <div className="w-6 h-6 rounded-full overflow-hidden bg-white shadow-sm hover:scale-110 transition-transform">
-                <Image src="/images/tools/claude.png" alt="Claude" width={24} height={24} className="object-cover" />
+                <Image src={`${basePath}/images/tools/claude.png`} alt="Claude" width={24} height={24} className="object-cover" />
               </div>
               <div className="w-6 h-6 rounded-full overflow-hidden bg-white shadow-sm hover:scale-110 transition-transform">
-                <Image src="/images/tools/perplexity.png" alt="Perplexity" width={24} height={24} className="object-cover" />
+                <Image src={`${basePath}/images/tools/perplexity.png`} alt="Perplexity" width={24} height={24} className="object-cover" />
               </div>
               <div className="w-6 h-6 rounded-full overflow-hidden bg-white shadow-sm hover:scale-110 transition-transform">
-                <Image src="/images/tools/gemini.png" alt="Gemini" width={24} height={24} className="object-cover" />
+                <Image src={`${basePath}/images/tools/gemini.png`} alt="Gemini" width={24} height={24} className="object-cover" />
               </div>
               <div className="w-6 h-6 rounded-full overflow-hidden bg-white shadow-sm hover:scale-110 transition-transform">
-                <Image src="/images/tools/office365.png" alt="Office 365" width={24} height={24} className="object-cover" />
+                <Image src={`${basePath}/images/tools/office365.png`} alt="Office 365" width={24} height={24} className="object-cover" />
               </div>
               <div className="w-6 h-6 rounded-full overflow-hidden bg-white shadow-sm hover:scale-110 transition-transform">
-                <Image src="/images/tools/canva.png" alt="Canva" width={24} height={24} className="object-cover" />
+                <Image src={`${basePath}/images/tools/canva.png`} alt="Canva" width={24} height={24} className="object-cover" />
               </div>
               <div className="w-6 h-6 rounded-full overflow-hidden bg-white shadow-sm hover:scale-110 transition-transform">
-                <Image src="/images/tools/wordpress.png" alt="WordPress" width={24} height={24} className="object-cover" />
+                <Image src={`${basePath}/images/tools/wordpress.png`} alt="WordPress" width={24} height={24} className="object-cover" />
               </div>
               <div className="w-6 h-6 rounded-full overflow-hidden bg-white shadow-sm hover:scale-110 transition-transform">
-                <Image src="/images/tools/ollama.png" alt="Ollama" width={24} height={24} className="object-cover" />
+                <Image src={`${basePath}/images/tools/ollama.png`} alt="Ollama" width={24} height={24} className="object-cover" />
               </div>
             </div>
           </div>
