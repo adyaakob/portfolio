@@ -120,15 +120,15 @@ export default function ProjectsInMotion() {
             {technicalConsultationProjects.map((project, index) => (
               <div 
                 key={index}
-                className="bg-gray-50 dark:bg-gray-800/50 rounded-lg overflow-hidden shadow-md hover:shadow-xl transition-all duration-300 print:shadow-none print:border print:border-gray-200"
+                className="bg-gray-50 dark:bg-gray-800/50 rounded-lg overflow-hidden shadow-md hover:shadow-xl transition-all duration-300 print:shadow-none print:border print:border-gray-200 print:break-inside-avoid"
               >
-                <div className="relative h-48 mb-6 print:h-40 print:mb-4">
+                <div className="relative h-48 w-full mb-6 print:h-[200px] print:w-full print:mb-4">
                   {project.image ? (
                     <Image
                       src={project.image}
                       alt={project.name}
                       fill
-                      className="object-cover"
+                      className="object-cover print:object-contain"
                       sizes="(max-width: 768px) 100vw, 50vw"
                       quality={40}
                       loading={index < 2 ? "eager" : "lazy"}
@@ -138,11 +138,11 @@ export default function ProjectsInMotion() {
                     <DefaultProjectImage />
                   )}
                 </div>
-                <div className="px-6 pb-6 print:px-4 print:pb-4">
-                  <h4 className="text-gray-900 dark:text-white font-bold text-xl mb-2 print:text-base">
+                <div className="px-6 pb-6 print:px-4 print:pb-4 print:pt-2">
+                  <h4 className="text-gray-900 dark:text-white font-bold text-xl mb-2 print:text-base print:mb-1">
                     {project.name}
                   </h4>
-                  <p className="text-gray-600 dark:text-gray-300 text-sm">
+                  <p className="text-gray-700 dark:text-gray-300 text-sm print:text-xs">
                     {project.description}
                   </p>
                 </div>
@@ -151,31 +151,24 @@ export default function ProjectsInMotion() {
           </div>
         </div>
 
-        {/* Technology Exploration & Innovation Lab Section */}
-        <div className="print:break-before-page">
+        {/* Self-Funded Projects Section */}
+        <div>
           <h3 className="text-2xl font-bold text-gray-900 dark:text-white mb-6">
-            Technology Exploration & Innovation Lab
+            Self-Funded Projects
           </h3>
-          <p className="text-gray-700 dark:text-gray-300 mb-8 max-w-3xl">
-            Welcome to my personal innovation space where I actively explore emerging technologies through hands-on experimentation. 
-            This lab serves as a testbed for evaluating cutting-edge tools, frameworks, and AI capabilities, 
-            transforming theoretical concepts into practical applications. Each project represents a focused investigation 
-            into specific technologies, helping me stay at the forefront of technological advancement while developing 
-            real-world solutions.
-          </p>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
             {selfFundedProjects.map((project, index) => (
               <div 
                 key={index}
-                className="bg-gray-50 dark:bg-gray-800/50 rounded-lg overflow-hidden shadow-md hover:shadow-xl transition-all duration-300 print:shadow-none print:border print:border-gray-200"
+                className="bg-gray-50 dark:bg-gray-800/50 rounded-lg overflow-hidden shadow-md hover:shadow-xl transition-all duration-300 print:shadow-none print:border print:border-gray-200 print:break-inside-avoid"
               >
-                <div className="relative h-48 mb-6 print:h-40 print:mb-4">
+                <div className="relative h-48 w-full mb-6 print:h-[200px] print:w-full print:mb-4">
                   {project.image ? (
                     <Image
                       src={project.image}
                       alt={project.name}
                       fill
-                      className="object-cover"
+                      className="object-cover print:object-contain"
                       sizes="(max-width: 768px) 100vw, 50vw"
                       quality={40}
                       loading={index < 2 ? "eager" : "lazy"}
@@ -185,11 +178,11 @@ export default function ProjectsInMotion() {
                     <DefaultProjectImage />
                   )}
                 </div>
-                <div className="px-6 pb-6 print:px-4 print:pb-4">
-                  <h4 className="text-gray-900 dark:text-white font-bold text-xl mb-2 print:text-base">
+                <div className="px-6 pb-6 print:px-4 print:pb-4 print:pt-2">
+                  <h4 className="text-gray-900 dark:text-white font-bold text-xl mb-2 print:text-base print:mb-1">
                     {project.name}
                   </h4>
-                  <p className="text-gray-600 dark:text-gray-300 text-sm">
+                  <p className="text-gray-700 dark:text-gray-300 text-sm print:text-xs">
                     {project.description}
                   </p>
                 </div>

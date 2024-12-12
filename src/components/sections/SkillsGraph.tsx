@@ -51,27 +51,53 @@ const skillsData: D3Node[] = [
   { id: "AI", group: "Creative", level: 3, priority: 3, connections: ["SW DEV"], isSpecial: true },
 ];
 
-export default function SkillsGraph() {
+interface SkillsGraphProps {
+  forceLightTheme?: boolean;
+}
+
+export default function SkillsGraph({ forceLightTheme = false }: SkillsGraphProps) {
   const svgRef = useRef<SVGSVGElement>(null);
   const [mounted, setMounted] = useState(false);
-
-  const colorMapping = useMemo(() => ({
-    Defense: "rgba(147, 197, 253, 0.95)",
-    Technical: "rgba(110, 231, 183, 0.95)",
-    Management: "rgba(251, 146, 160, 0.95)",
-    Creative: "rgba(253, 186, 116, 0.95)"
-  }), []);
-
-  const edgeColors = useMemo(() => ({
-    Defense: "rgba(30, 58, 138, 1)",
-    Technical: "rgba(6, 78, 59, 1)",
-    Management: "rgba(136, 19, 55, 1)",
-    Creative: "rgba(124, 45, 18, 1)"
-  }), []);
+  const [isPdfExport, setIsPdfExport] = useState(false);
 
   useEffect(() => {
     setMounted(true);
+    setIsPdfExport(window.location.href.includes('localhost:3000'));
   }, []);
+
+  const colorMapping = useMemo(() => {
+    if (forceLightTheme || isPdfExport) {
+      return {
+        Defense: "rgba(59, 130, 246, 0.7)",      // Lighter blue
+        Technical: "rgba(16, 185, 129, 0.7)",    // Lighter green
+        Management: "rgba(244, 63, 94, 0.7)",    // Lighter red/pink
+        Creative: "rgba(245, 158, 11, 0.7)"      // Lighter orange
+      };
+    }
+    return {
+      Defense: "rgba(147, 197, 253, 0.95)",
+      Technical: "rgba(110, 231, 183, 0.95)",
+      Management: "rgba(251, 146, 160, 0.95)",
+      Creative: "rgba(253, 186, 116, 0.95)"
+    };
+  }, [forceLightTheme, isPdfExport]);
+
+  const edgeColors = useMemo(() => {
+    if (forceLightTheme || isPdfExport) {
+      return {
+        Defense: "rgba(29, 78, 216, 1)",     // Darker blue
+        Technical: "rgba(6, 95, 70, 1)",     // Darker green
+        Management: "rgba(190, 18, 60, 1)",  // Darker red/pink
+        Creative: "rgba(180, 83, 9, 1)"      // Darker orange
+      };
+    }
+    return {
+      Defense: "rgba(30, 58, 138, 1)",
+      Technical: "rgba(6, 78, 59, 1)",
+      Management: "rgba(136, 19, 55, 1)",
+      Creative: "rgba(124, 45, 18, 1)"
+    };
+  }, [forceLightTheme, isPdfExport]);
 
   useEffect(() => {
     if (!mounted || !svgRef.current) return;
@@ -84,8 +110,7 @@ export default function SkillsGraph() {
 
     const svg = d3.select(svgRef.current)
       .attr("viewBox", `0 0 ${width} ${height}`)
-      .attr("preserveAspectRatio", "xMidYMid meet")
-      .style("background", "var(--graph-bg)");
+      .attr("preserveAspectRatio", "xMidYMid meet");
 
     const simulation = d3.forceSimulation<D3Node>(skillsData)
       .force("charge", d3.forceManyBody().strength(-1000))
@@ -131,7 +156,7 @@ export default function SkillsGraph() {
       .selectAll("line")
       .data(links)
       .join("line")
-      .attr("stroke", "#94a3b8")
+      .attr("stroke", forceLightTheme || isPdfExport ? "#6b7280" : "#94a3b8")
       .attr("stroke-width", 2)
       .attr("opacity", 0.7)
       .attr("filter", "url(#glow)");
@@ -175,14 +200,14 @@ export default function SkillsGraph() {
       .text(d => d.id)
       .attr("text-anchor", "middle")
       .attr("dy", ".35em")
-      .attr("fill", "var(--text-primary)")
+      .attr("fill", d => d.group === "Management" ? "white" : "inherit")
       .style("font-family", "'Inter', 'Outfit', 'SF Pro Display', system-ui, sans-serif")
       .style("font-weight", "600")
       .style("font-size", d => d.id === "AI" ? "18px" : d.priority === 1 ? "16px" : "15px")
       .style("letter-spacing", "0.02em")
-      .style("text-shadow", "var(--text-shadow)")
+      .style("text-shadow", forceLightTheme || isPdfExport ? "none" : "var(--text-shadow)")
       .style("paint-order", "stroke")
-      .style("stroke", "var(--text-stroke)")
+      .style("stroke", forceLightTheme || isPdfExport ? "transparent" : "var(--text-stroke)")
       .style("stroke-width", "2px");
 
     simulation.on("tick", () => {
@@ -202,29 +227,23 @@ export default function SkillsGraph() {
     return () => {
       simulation.stop();
     };
-  }, [mounted, colorMapping, edgeColors]);
+  }, [mounted, colorMapping, edgeColors, forceLightTheme, isPdfExport]);
 
   return (
     <section id="skills-graph" className="py-16">
       <div className="container mx-auto px-4">
         <SectionTitle>Skills & Expertise</SectionTitle>
         <div className="mt-8 bg-gray-100/90 dark:bg-gray-900/90 rounded-lg shadow-xl dark:shadow-2xl backdrop-blur-lg p-6 border border-gray-200 dark:border-gray-700">
-          <style jsx>{`
-            :global(:root) {
-              --graph-bg: linear-gradient(to bottom right, rgb(255, 255, 255), rgb(250, 250, 250));
-            }
-            :global(.dark) {
-              --graph-bg: linear-gradient(to bottom right, rgb(17, 24, 39), rgb(7, 10, 16));
-            }
-          `}</style>
-          <svg 
-            ref={svgRef} 
-            className="w-full h-[700px]" 
-            style={{ 
-              maxHeight: '80vh',
-              fontFamily: "'Inter', 'Outfit', 'SF Pro Display', system-ui, sans-serif"
-            }} 
-          />
+          <div className="bg-white dark:bg-gray-900 rounded-lg overflow-hidden">
+            <svg 
+              ref={svgRef} 
+              className="w-full h-[700px]" 
+              style={{ 
+                maxHeight: '80vh',
+                fontFamily: "'Inter', 'Outfit', 'SF Pro Display', system-ui, sans-serif"
+              }} 
+            />
+          </div>
           <div className="mt-8 flex flex-wrap gap-4 justify-center">
             {Object.keys(colorMapping).map((group) => (
               <div key={group} className="flex items-center">

@@ -15,10 +15,18 @@ export default function Hero() {
           <p className="text-xl text-gray-600 dark:text-gray-300">
             Driving innovation through strategic product development and research leadership
           </p>
-          <button className="flex items-center gap-2 bg-blue-600 hover:bg-blue-700 text-white px-6 py-3 rounded-lg transition-colors">
-            <Mail className="w-5 h-5" />
-            Contact Me
-          </button>
+          <div className="flex space-x-4">
+            <button className="flex items-center gap-2 bg-blue-600 hover:bg-blue-700 text-white px-6 py-3 rounded-lg transition-colors">
+              <Mail className="w-5 h-5" />
+              Contact Me
+            </button>
+            <a
+              href="/cv"
+              className="flex items-center gap-2 bg-green-600 hover:bg-green-700 text-white px-6 py-3 rounded-lg transition-colors"
+            >
+              View My CV
+            </a>
+          </div>
         </div>
         <div className="flex justify-center lg:justify-end">
           <div className="relative w-64 h-64 lg:w-80 lg:h-80">

@@ -76,26 +76,25 @@ export default function Skills() {
   ];
 
   return (
-    <section id="skills" className="py-16 bg-gray-50 dark:bg-gray-900 print:py-2 print:bg-transparent print:break-after-page">
+    <section id="skills" className="py-16 bg-gray-50 dark:bg-gray-900 print:py-2 print:bg-transparent">
       <div className="container mx-auto px-4">
         <SectionTitle>Professional Skills</SectionTitle>
 
-        <div className="max-w-4xl mx-auto grid md:grid-cols-2 gap-6 print:gap-3 print:grid-cols-2">
+        <div className="max-w-4xl mx-auto grid md:grid-cols-2 gap-6">
           {skillCategories.map((category, index) => (
             <div 
               key={index}
-              className="bg-white dark:bg-gray-800 p-6 rounded-lg shadow-sm print:p-2 print:shadow-none print:bg-transparent"
+              className="bg-white dark:bg-gray-800 p-6 rounded-lg shadow-sm"
             >
-              <h3 className="text-xl font-semibold mb-4 text-gray-900 dark:text-white print:text-sm print:mb-1">
+              <h3 className="text-xl font-semibold mb-4 text-gray-900 dark:text-white">
                 {category.title}
               </h3>
-              <ul className="space-y-2 print:space-y-0.5">
+              <ul className="space-y-2">
                 {category.skills.map((skill, skillIndex) => (
                   <li 
                     key={skillIndex}
-                    className="flex items-center text-gray-600 dark:text-gray-400 print:text-xs print:leading-tight"
+                    className="text-gray-600 dark:text-gray-400"
                   >
-                    <span className="mr-2 print:mr-1">•</span>
                     {skill}
                   </li>
                 ))}
@@ -106,4 +105,4 @@ export default function Skills() {
       </div>
     </section>
   );
-} 
+}

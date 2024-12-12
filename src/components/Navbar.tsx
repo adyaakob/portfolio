@@ -21,6 +21,7 @@ export default function Navbar() {
             <a href="#experience" className="hover:text-gray-600 dark:hover:text-gray-300">Experience</a>
             <a href="#projects" className="hover:text-gray-600 dark:hover:text-gray-300">Projects</a>
             <a href="#contact" className="hover:text-gray-600 dark:hover:text-gray-300">Contact</a>
+            <a href="/cv" className="px-4 py-2 bg-blue-500 text-white rounded-lg hover:bg-blue-600 transition-colors">CV</a>
             <ThemeToggle />
           </div>
 
@@ -41,6 +42,7 @@ export default function Navbar() {
             <a href="#experience" className="block py-2 hover:text-gray-600 dark:hover:text-gray-300">Experience</a>
             <a href="#projects" className="block py-2 hover:text-gray-600 dark:hover:text-gray-300">Projects</a>
             <a href="#contact" className="block py-2 hover:text-gray-600 dark:hover:text-gray-300">Contact</a>
+            <a href="/cv" className="block py-2 text-blue-500 hover:text-blue-600">View CV</a>
             <div className="pt-2">
               <ThemeToggle />
             </div>

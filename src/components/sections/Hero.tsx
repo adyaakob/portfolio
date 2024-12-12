@@ -5,7 +5,11 @@ import { getBasePath } from '@/lib/utils'
 import Link from 'next/link'
 import { useTheme } from 'next-themes'
 
-export default function Hero() {
+interface HeroProps {
+  children?: React.ReactNode;
+}
+
+export default function Hero({ children }: HeroProps) {
   const basePath = getBasePath()
   const { theme, setTheme } = useTheme()
 
@@ -32,7 +36,7 @@ export default function Hero() {
   }
 
   return (
-    <section className="py-12 sm:py-16 print:py-0">
+    <section className="py-16 sm:py-20 print:py-0">
       <div className="container mx-auto px-4">
         <div className="flex flex-col-reverse md:flex-row items-center justify-between gap-8">
           {/* Text Content */}
@@ -62,19 +66,25 @@ export default function Hero() {
               <span>adyaakob@gmail.com</span>
             </div>
 
-            <div className="flex flex-wrap gap-4 justify-center md:justify-start print:hidden">
+            <div className="flex space-x-4 mt-4 print:hidden">
               <Link
                 href="#contact"
-                className="bg-purple-600 hover:bg-purple-700 text-white px-8 py-3 rounded-lg font-medium transition-colors"
+                className="bg-purple-600 hover:bg-purple-700 text-white px-6 py-2 rounded-md"
               >
                 Contact Me
               </Link>
               <button
                 onClick={handlePrint}
-                className="bg-gray-200 dark:bg-gray-700 hover:bg-gray-300 dark:hover:bg-gray-600 text-gray-800 dark:text-white px-8 py-3 rounded-lg font-medium transition-colors"
+                className="bg-gray-200 dark:bg-gray-700 hover:bg-gray-300 dark:hover:bg-gray-600 text-gray-800 dark:text-white px-6 py-2 rounded-md"
               >
                 Save as PDF
               </button>
+              <Link
+                href="/cv"
+                className="bg-green-600 hover:bg-green-700 text-white px-6 py-2 rounded-md"
+              >
+                View My CV
+              </Link>
             </div>
           </div>
 
