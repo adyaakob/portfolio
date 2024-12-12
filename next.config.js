@@ -1,13 +1,13 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   output: 'export',  // Enable static exports
-  basePath: process.env.NODE_ENV === 'production' ? '/portfolio' : '', // Dynamic base path
+  basePath: '/portfolio', // Fixed base path for GitHub Pages
   images: {
     unoptimized: true, // Required for static export
     domains: ['flagcdn.com'],
   },
   // Configure build output directory
-  distDir: '.next',
+  distDir: 'out',
   // Enable SWC compilation cache
   compiler: {
     styledComponents: true,
