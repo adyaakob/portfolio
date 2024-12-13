@@ -24,14 +24,16 @@ jobs:
         run: npm ci
 
       - name: Build
-        run: npm run build
+        run: |
+          npm run build
+          npm run export
 
       - name: Add .nojekyll file
-        run: touch ./out/.nojekyll
+        run: touch ./.next/.nojekyll
 
       - name: Deploy 🚀
         uses: JamesIves/github-pages-deploy-action@v4
         with:
-          folder: out
+          folder: .next
           branch: gh-pages
           clean: true
