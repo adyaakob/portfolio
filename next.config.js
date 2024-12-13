@@ -1,7 +1,7 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   output: 'export',  // Enable static exports
-  // basePath: '/portfolio', // Commented out for local development
+  basePath: process.env.NODE_ENV === 'production' ? '/portfolio' : '', // Dynamic base path
   images: {
     unoptimized: true, // Required for static export
     domains: ['flagcdn.com'],
