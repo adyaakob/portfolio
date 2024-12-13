@@ -1,7 +1,7 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   output: 'export',  // Enable static exports
-  basePath: '/portfolio', // Fixed base path for GitHub Pages
+  // basePath: '/portfolio', // Commented out for local development
   images: {
     unoptimized: true, // Required for static export
     domains: ['flagcdn.com'],
