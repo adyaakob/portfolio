@@ -107,7 +107,7 @@ export default function Home() {
           <hr className="border-gray-200 dark:border-gray-700 my-8" />
           <References />
           <hr className="border-gray-200 dark:border-gray-700 my-8" />
-          <Contact className="hidden print:hidden" />
+          <Contact className="" />
         </div>
       </div>
     </main>
