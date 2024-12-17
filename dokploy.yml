@@ -11,8 +11,12 @@ build:
   source_directory: /
 
 start:
-  command: npx next start -p 3000
+  command: node node_modules/next/dist/bin/next start -p 3000
   port: 3000
+  environment:
+    PORT: 3000
+    NODE_ENV: production
+    HOSTNAME: 0.0.0.0
 
 deploy:
   provider: github
@@ -30,6 +34,7 @@ node_version: 18.x
 environment:
   NODE_ENV: production
   PORT: 3000
+  HOSTNAME: 0.0.0.0
 
 # Optional: Add any specific build settings
 settings:

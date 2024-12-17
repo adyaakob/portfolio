@@ -14,6 +14,16 @@ const nextConfig = {
   },
   // Ensure compatibility with static export
   trailingSlash: true,
+  
+  // Configure server settings
+  serverRuntimeConfig: {
+    port: process.env.PORT || 3000,
+    hostname: process.env.HOSTNAME || 'localhost'
+  },
+  publicRuntimeConfig: {
+    port: process.env.PORT || 3000,
+    hostname: process.env.HOSTNAME || 'localhost'
+  }
 }
 
 module.exports = nextConfig
