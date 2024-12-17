@@ -1,9 +1,14 @@
 build:
   command: npm install && npm run build
   output: .next
+  path: /portfolio
+
 deploy:
-  target: gh-pages
+  provider: github
+  account: adyaakob
+  repository: portfolio
   branch: gh-pages
+  autodeploy: false
 
 # Additional configuration for Dokploy deployment
 version: 1.0
