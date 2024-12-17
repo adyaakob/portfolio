@@ -7,7 +7,7 @@ const nextConfig = {
     domains: ['flagcdn.com'],
   },
   // Configure build output directory
-  distDir: 'out',
+  distDir: '.next',
   // Enable SWC compilation cache
   compiler: {
     styledComponents: true,

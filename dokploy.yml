@@ -1,0 +1,20 @@
+build:
+  command: npm install && npm run build
+  output: .next
+deploy:
+  target: gh-pages
+  branch: gh-pages
+
+# Additional configuration for Dokploy deployment
+version: 1.0
+framework: nextjs
+node_version: 18.x
+
+# Specify build environment
+environment:
+  NODE_ENV: production
+
+# Optional: Add any specific build settings
+settings:
+  install_dependencies: true
+  cache_dependencies: true

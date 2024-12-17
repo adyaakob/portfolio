@@ -26,11 +26,11 @@ jobs:
           npm run build
 
       - name: Add .nojekyll file
-        run: touch ./out/.nojekyll
+        run: touch ./.next/.nojekyll
 
       - name: Deploy 🚀
         uses: JamesIves/github-pages-deploy-action@v4
         with:
-          folder: out
+          folder: .next
           branch: gh-pages
           clean: true
