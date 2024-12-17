@@ -11,7 +11,7 @@ build:
   source_directory: /
 
 start:
-  command: npm start
+  command: npx next start -p 3000
   port: 3000
 
 deploy:
@@ -29,6 +29,7 @@ node_version: 18.x
 # Specify build environment
 environment:
   NODE_ENV: production
+  PORT: 3000
 
 # Optional: Add any specific build settings
 settings:
