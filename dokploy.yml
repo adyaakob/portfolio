@@ -1,7 +1,18 @@
+source:
+  type: github
+  repository: adyaakob/portfolio
+  branch: main
+  directory: /
+
 build:
   command: npm install && npm run build
   output: .next
   path: /portfolio
+  source_directory: /
+
+start:
+  command: npm start
+  port: 3000
 
 deploy:
   provider: github

@@ -12,6 +12,19 @@ const nextConfig = {
   compiler: {
     styledComponents: true,
   },
+  // Ensure compatibility with static export
+  trailingSlash: true,
+  
+  // Optional: Configure export settings
+  exportPathMap: async function (
+    defaultPathMap,
+    { dev, dir, outDir, distDir, buildId }
+  ) {
+    return {
+      '/': { page: '/' },
+      // Add other static paths if needed
+    }
+  },
 }
 
 module.exports = nextConfig
