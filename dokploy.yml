@@ -9,6 +9,7 @@ build:
   output: .next
   path: /portfolio
   source_directory: /
+  builder: nixpacks
 
 start:
   command: npm run start
@@ -40,3 +41,4 @@ environment:
 settings:
   install_dependencies: true
   cache_dependencies: true
+  builder: nixpacks
