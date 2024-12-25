@@ -1,0 +1,12 @@
+{
+  "app\\page.tsx -> @/components/sections/CareerTimeline": {
+    "id": "app\\page.tsx -> @/components/sections/CareerTimeline",
+    "files": [
+      "static/chunks/_app-pages-browser_src_components_sections_CareerTimeline_tsx.js"
+    ]
+  },
+  "app\\page.tsx -> @/components/sections/WorldMap": {
+    "id": "app\\page.tsx -> @/components/sections/WorldMap",
+    "files": []
+  }
+}
